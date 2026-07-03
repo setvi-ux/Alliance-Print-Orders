@@ -37,7 +37,7 @@ input{font-family:inherit}
 .app{display:grid;grid-template-columns:86px 1fr;min-height:100vh}
 .rail{background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;padding:12px 0 10px;gap:1px;position:sticky;top:0;height:100vh;overflow-y:auto}
 .rail::-webkit-scrollbar{width:0}
-.logo{width:52px;height:52px;border-radius:14px;background:#0D1B2E;display:flex;align-items:center;justify-content:center;margin-bottom:14px;box-shadow:var(--sh-1)}
+.logo{width:52px;height:52px;border-radius:14px;overflow:hidden;margin-bottom:14px;box-shadow:var(--sh-1)}
 .railitem{width:72px;padding:9px 4px 10px;border-radius:12px;display:flex;flex-direction:column;align-items:center;gap:6px;color:#6B7280;text-decoration:none;font-size:10.5px;font-weight:500;transition:.12s;text-align:center;line-height:1.15}
 .railitem:hover{color:var(--ink-2)}
 .railitem.active{color:var(--accent);font-weight:600}
@@ -348,7 +348,7 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
 <div class="app">
   <!-- Rail -->
   <nav class="rail">
-    <div class="logo"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M18.5 3.5 8 14h5.5L9.5 24.5 20 14h-5.5Z" fill="#1E96FC"/><path d="M18.5 3.5 8 14h5.5l-1 3.2L20 8.5l-3-.5Z" fill="#39C6A5"/></svg></div>
+    <div class="logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAABKJJREFUeAHdml9MW1Ucx7/ntrR0tB0wKlP2UNiikDEhJlPi1Aw1BiNk1aeZTI1xL/oyE6cPvlAffNKH4av6oDNxvhhwJlv8N+OiycSHMk1sNEqjYW6uY6zQtaX0np3fWVja0Y1b+J0C/SQN9/b2NvfD99zf+d3bK3AT7u7BvXZB7pOQEUCEsTGICYGYbde9hfhooniDuLEUjjRavvywBF7FBkZYOGKnlWhidEav63eVnPDlT6mlXtQGMZmp6ydJi9YoOdSOHNFrNWgnlWBnJCxEfhI1iHSJfsuyrpuuF9xbAwi9GwEHVsGOuCWEGpoS6wHfgx1ofqMfosELDpTbPjekXPNzz/J7EXxuN/zP3Atmwm6sMd6eNjS/3g9XaxAmWFPBxpcfMpFaCWsiSIVkS/RJ1G1vgWmqLhhQiQWf381WSJajaoJUSCg1b89dqCZVETRdSG6HUcGVlv+5z8+CC2OCnh0takgOVJSaTOeQHD6J3MQUuDAiSIVks5oCKiE3cQ6Xhk/AVpKcsApS+W86/FhFhYRSu/LxOOuwLDkmMNHwRCcaX9lTUfnP/5VUqZ3EwoUUTGGBCTpv7LnKhhcVIeH3wCQuEbo7Cgbs9LweZlbAC09Xq6N9SNA/uFMv586egwnYBBfJjv+jD7ZenYck4ASaJ3172pH75d+KR8FysAsShQuzyP44qQWd9puu5k1aUs7N63OTCzbBupZ22FdnbqzTkM38NKllPTu2OEqTPkOSljovsypNDtgE2176CELdnMxN/VbyPqVRaZqerq1IHR0HB2xVlAjevx93vvA+3ME7St5fUClOv/MdLqtXweCUUA5WQYLkWvcfQaB3aMm29FdxXHxtjLUVWw52Qf2l3gY0PnwQzY8fKpvmxcNjbENw2WOBQRq6HkXo6bf135tJqfbs/IGjxoesUUGCEqQkGx85uGQbpfnfgU+MpmlccJFAz1DZAkSYTLNqggTJkeTmB55dss1UmmxXEzKXhlDFxQk0nXjbujH9zQgWUv+XbKM06dqQC7aJ/uqfp7Fpe5+uoE6gNH0dfZDzaeSTpb/9UPfDBd/VhEpwNnZcL9dv2+VoH/pnkKQ72Kol6Tu4YW+2qVXL/n0GvvB9jtP0hNq1KO1b3M9yYOZqQh1kRkmSoCfU4Wgf+qx/10DZfnY1GBEkaLiRJA3XclPDraDiQ0OW9uXA2G1DSqTlqTf1ATuFKvHMmU8xN3EcXBgRrN/WjSbqQwPOk8tN/aqmjfeWTBurhV2wSbVk/p6hiva5/MMHrKkVwya42HNWMiRpapj+egTzSXPPQLAJ0jWg02mBmI19gZnTH8I0bIJO5QrqHLukWjTOqeB2VPUHUEot9fMxIx3LraiKYLVTK8a4YPr3b/W5Vs3UijEmSJM2pcbVkawUI4KmJu2VQIIJ9QqDAROt1qoQiLkFxJiEPIRVsp5SW0TQk8DoHNwrhDyFGkTKQrsLyT8SVuieJrXehxpCjcoRxE8c03fVbK87SuMVtUMMGU+UFlx69Xw8i7adn1kF6cMGT1Inl/G8WPpQejGdA2FLuKJSiJ718CypQxICcsyW1ijiX35fvOEay9PGx6CIxDUAAAAASUVORK5CYII=" alt="SETVI" style="width:100%;height:100%;object-fit:cover;display:block"></div>
     <a class="railitem circle" href="#"><span class="cwrap"><svg class="ic"><use href="#i-mail"/></svg></span>Compose</a>
     <a class="railitem" href="#"><svg class="ic"><use href="#i-home"/></svg>Home</a>
     <a class="railitem" href="#"><svg class="ic"><use href="#i-truck"/></svg>Orders</a>
