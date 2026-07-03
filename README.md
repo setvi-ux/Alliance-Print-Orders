@@ -1,4 +1,4 @@
-# Alliance Laundry Systems — Print Orders (SATV prototype)
+# Alliance Laundry Systems — Print Orders (SETVI prototype)
 
 Interactive HTML prototype of the **Print Orders** feature for the SATV app, built for Alliance Laundry Systems. Users select digital assets from the DAM, customize dynamic ones (per-machine QR pages + cover page), and send them to a third-party print provider that handles quantity, delivery and payment.
 
