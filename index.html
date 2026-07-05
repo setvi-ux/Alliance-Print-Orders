@@ -53,28 +53,34 @@ input{font-family:inherit}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
 /* ---------- App shell ---------- */
-.app{display:grid;grid-template-columns:86px 1fr;min-height:100vh}
-.rail{background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;padding:12px 0 10px;gap:1px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.app{display:flex;flex-direction:column;min-height:100vh}
+.shell{display:grid;grid-template-columns:86px 1fr;flex:1;min-width:0}
+.tb-left{display:flex;align-items:center;gap:10px}
+.tb-left .logo{margin:0}
+.tb-logo{width:86px;display:flex;justify-content:center;flex-shrink:0}
+.rail{background:transparent;border-right:0;display:flex;flex-direction:column;align-items:center;padding:14px 0 8px;gap:2px;position:sticky;top:72px;height:calc(100vh - 72px);overflow-y:auto}
 .rail::-webkit-scrollbar{width:0}
-.logo{width:52px;height:52px;border-radius:14px;overflow:hidden;margin-bottom:14px;box-shadow:var(--sh-1)}
-.railitem{width:72px;padding:9px 4px 10px;border-radius:12px;display:flex;flex-direction:column;align-items:center;gap:6px;color:#6B7280;text-decoration:none;font-size:10.5px;font-weight:500;transition:.12s;text-align:center;line-height:1.15}
-.railitem:hover{color:var(--ink-2)}
-.railitem.active{color:var(--accent);font-weight:600}
-.railitem.active .ic{stroke:var(--accent)}
-.railitem.circle .cwrap{width:44px;height:44px;border-radius:50%;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;color:var(--accent)}
+.logo{width:56px;height:56px;border-radius:14px;overflow:hidden;box-shadow:var(--sh-1);flex-shrink:0}
+.railitem{width:100%;padding:9px 4px 10px;display:flex;flex-direction:column;align-items:center;gap:5px;color:var(--ink-3);text-decoration:none;font-size:11px;font-weight:500;transition:.12s;text-align:center;line-height:1.15}
+.railitem:hover{background:var(--surface);color:var(--ink-2)}
+.railitem.active{background:var(--surface);color:var(--accent);font-weight:600;box-shadow:inset 3px 0 0 var(--accent)}
+.railitem.circle:hover{background:transparent}
+.railitem.circle .cwrap{width:44px;height:44px;border-radius:50%;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;color:var(--accent);background:var(--surface);transition:.12s}
+.railitem.circle:hover .cwrap{background:var(--accent-soft)}
 .railitem.circle .cwrap .ic{width:20px;height:20px}
-.railitem.admin{background:var(--surface-2);color:var(--ink-2);padding:8px 4px;border-radius:10px;font-weight:600;font-size:11.5px}
-.rail .ic{width:22px;height:22px;stroke-width:1.7}
+.railband{width:100%;background:var(--surface-3);color:var(--ink-3);font-size:11px;font-weight:700;letter-spacing:.05em;padding:6px 12px;text-align:left;margin:6px 0 2px}
+.railfoot{margin-top:auto;padding:10px 8px 4px;font-size:11px;color:var(--ink-3);width:100%;text-align:left;padding-left:12px}
+.rail .ic{width:22px;height:22px}
 
 .main{display:flex;flex-direction:column;min-width:0}
-.topbar{height:66px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 30px;position:sticky;top:0;z-index:30}
+.topbar{height:72px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px 0 0;position:sticky;top:0;z-index:30}
 .topbar h1{font-size:20px;font-weight:600;margin:0;letter-spacing:-.01em;line-height:28px}
 .top-right{display:flex;align-items:center;gap:18px}
 .bell{position:relative;color:var(--ink-2);cursor:pointer}
 .bell .dot{position:absolute;top:-1px;right:-1px;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--surface)}
 .acct{display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:999px;padding:4px 6px 4px 14px;cursor:pointer}
 .acct .ava{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#4A6FA5,#8AA5C9);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:12px}
-.content{padding:26px 30px 90px;width:100%}
+.content{padding:20px 20px 90px 14px;width:100%}
 
 /* ---------- Buttons ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:42px;padding:0 18px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--accent);background:var(--surface);color:var(--accent);transition:.14s}
@@ -195,12 +201,12 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
 .empty p{margin:0 0 20px;color:var(--ink-2);max-width:340px}
 
 /* ---------- Asset tabs + grid ---------- */
-/* DS Segmented Controller (M) */
-.tabs{display:flex;gap:8px;align-items:center}
-.tab{border:0;background:transparent;color:var(--ink-3);font-size:14px;line-height:20px;font-weight:600;padding:8px 16px;border-radius:999px;cursor:pointer;transition:.12s;font-family:inherit}
-.tab:hover{color:var(--ink-2);background:var(--surface-2)}
-.tab.on{background:var(--accent-soft);color:var(--accent)}
-.tab.on:hover{background:var(--accent-border)}
+/* DS Segmented Controller (M) — app style: transparent group, solid active */
+.tabs{display:flex;gap:8px;align-items:center;background:transparent}
+.tab{border:0;background:transparent;color:var(--ink-2);font-size:14px;line-height:20px;font-weight:600;padding:8px 16px;border-radius:999px;cursor:pointer;transition:.12s;font-family:inherit}
+.tab:hover{background:var(--surface-2)}
+.tab.on{background:var(--accent);color:#fff}
+.tab.on:hover{background:var(--accent-hover)}
 .toolbar2{display:flex;align-items:center;margin-bottom:20px;gap:14px}
 
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
@@ -388,27 +394,8 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
 <body>
 <div class="app">
   <!-- Rail -->
-  <nav class="rail">
-    <div class="logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAABKJJREFUeAHdml9MW1Ucx7/ntrR0tB0wKlP2UNiikDEhJlPi1Aw1BiNk1aeZTI1xL/oyE6cPvlAffNKH4av6oDNxvhhwJlv8N+OiycSHMk1sNEqjYW6uY6zQtaX0np3fWVja0Y1b+J0C/SQN9/b2NvfD99zf+d3bK3AT7u7BvXZB7pOQEUCEsTGICYGYbde9hfhooniDuLEUjjRavvywBF7FBkZYOGKnlWhidEav63eVnPDlT6mlXtQGMZmp6ydJi9YoOdSOHNFrNWgnlWBnJCxEfhI1iHSJfsuyrpuuF9xbAwi9GwEHVsGOuCWEGpoS6wHfgx1ofqMfosELDpTbPjekXPNzz/J7EXxuN/zP3Atmwm6sMd6eNjS/3g9XaxAmWFPBxpcfMpFaCWsiSIVkS/RJ1G1vgWmqLhhQiQWf381WSJajaoJUSCg1b89dqCZVETRdSG6HUcGVlv+5z8+CC2OCnh0takgOVJSaTOeQHD6J3MQUuDAiSIVks5oCKiE3cQ6Xhk/AVpKcsApS+W86/FhFhYRSu/LxOOuwLDkmMNHwRCcaX9lTUfnP/5VUqZ3EwoUUTGGBCTpv7LnKhhcVIeH3wCQuEbo7Cgbs9LweZlbAC09Xq6N9SNA/uFMv586egwnYBBfJjv+jD7ZenYck4ASaJ3172pH75d+KR8FysAsShQuzyP44qQWd9puu5k1aUs7N63OTCzbBupZ22FdnbqzTkM38NKllPTu2OEqTPkOSljovsypNDtgE2176CELdnMxN/VbyPqVRaZqerq1IHR0HB2xVlAjevx93vvA+3ME7St5fUClOv/MdLqtXweCUUA5WQYLkWvcfQaB3aMm29FdxXHxtjLUVWw52Qf2l3gY0PnwQzY8fKpvmxcNjbENw2WOBQRq6HkXo6bf135tJqfbs/IGjxoesUUGCEqQkGx85uGQbpfnfgU+MpmlccJFAz1DZAkSYTLNqggTJkeTmB55dss1UmmxXEzKXhlDFxQk0nXjbujH9zQgWUv+XbKM06dqQC7aJ/uqfp7Fpe5+uoE6gNH0dfZDzaeSTpb/9UPfDBd/VhEpwNnZcL9dv2+VoH/pnkKQ72Kol6Tu4YW+2qVXL/n0GvvB9jtP0hNq1KO1b3M9yYOZqQh1kRkmSoCfU4Wgf+qx/10DZfnY1GBEkaLiRJA3XclPDraDiQ0OW9uXA2G1DSqTlqTf1ATuFKvHMmU8xN3EcXBgRrN/WjSbqQwPOk8tN/aqmjfeWTBurhV2wSbVk/p6hiva5/MMHrKkVwya42HNWMiRpapj+egTzSXPPQLAJ0jWg02mBmI19gZnTH8I0bIJO5QrqHLukWjTOqeB2VPUHUEot9fMxIx3LraiKYLVTK8a4YPr3b/W5Vs3UijEmSJM2pcbVkawUI4KmJu2VQIIJ9QqDAROt1qoQiLkFxJiEPIRVsp5SW0TQk8DoHNwrhDyFGkTKQrsLyT8SVuieJrXehxpCjcoRxE8c03fVbK87SuMVtUMMGU+UFlx69Xw8i7adn1kF6cMGT1Inl/G8WPpQejGdA2FLuKJSiJ718CypQxICcsyW1ijiX35fvOEay9PGx6CIxDUAAAAASUVORK5CYII=" alt="SETVI" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-    <a class="railitem circle" href="#"><span class="cwrap"><svg class="ic"><use href="#i-mail"/></svg></span>Compose</a>
-    <a class="railitem" href="#"><svg class="ic"><use href="#i-home"/></svg>Home</a>
-    <a class="railitem" href="#"><svg class="ic"><use href="#i-truck"/></svg>Orders</a>
-    <a class="railitem" href="#"><svg class="ic"><use href="#i-quote"/></svg>Quotes</a>
-    <a class="railitem" href="#"><svg class="ic"><use href="#i-spark"/></svg>Intelligence</a>
-    <a class="railitem" href="#"><svg class="ic"><use href="#i-bag"/></svg>Catalog</a>
-    <a class="railitem active" href="#" onclick="goOrders();return false"><svg class="ic"><use href="#i-cart"/></svg>Print Orders</a>
-    <a class="railitem" href="#"><svg class="ic"><use href="#i-file"/></svg>Resources</a>
-    <a class="railitem" href="#"><svg class="ic"><use href="#i-cube"/></svg>Workspaces</a>
-    <a class="railitem" href="#"><svg class="ic"><use href="#i-mega"/></svg>Campaign</a>
-    <a class="railitem" href="#"><svg class="ic"><use href="#i-bars"/></svg>Reporting</a>
-    <a class="railitem" href="#"><svg class="ic"><use href="#i-send"/></svg>Outbox</a>
-    <a class="railitem admin" href="#">Admin</a>
-    <a class="railitem" href="#"><svg class="ic"><use href="#i-sliders"/></svg>Manage</a>
-  </nav>
-
-  <div class="main">
-    <header class="topbar">
-      <h1>Print Orders</h1>
+  <header class="topbar">
+      <div class="tb-left"><span class="tb-logo"><div class="logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAABKJJREFUeAHdml9MW1Ucx7/ntrR0tB0wKlP2UNiikDEhJlPi1Aw1BiNk1aeZTI1xL/oyE6cPvlAffNKH4av6oDNxvhhwJlv8N+OiycSHMk1sNEqjYW6uY6zQtaX0np3fWVja0Y1b+J0C/SQN9/b2NvfD99zf+d3bK3AT7u7BvXZB7pOQEUCEsTGICYGYbde9hfhooniDuLEUjjRavvywBF7FBkZYOGKnlWhidEav63eVnPDlT6mlXtQGMZmp6ydJi9YoOdSOHNFrNWgnlWBnJCxEfhI1iHSJfsuyrpuuF9xbAwi9GwEHVsGOuCWEGpoS6wHfgx1ofqMfosELDpTbPjekXPNzz/J7EXxuN/zP3Atmwm6sMd6eNjS/3g9XaxAmWFPBxpcfMpFaCWsiSIVkS/RJ1G1vgWmqLhhQiQWf381WSJajaoJUSCg1b89dqCZVETRdSG6HUcGVlv+5z8+CC2OCnh0takgOVJSaTOeQHD6J3MQUuDAiSIVks5oCKiE3cQ6Xhk/AVpKcsApS+W86/FhFhYRSu/LxOOuwLDkmMNHwRCcaX9lTUfnP/5VUqZ3EwoUUTGGBCTpv7LnKhhcVIeH3wCQuEbo7Cgbs9LweZlbAC09Xq6N9SNA/uFMv586egwnYBBfJjv+jD7ZenYck4ASaJ3172pH75d+KR8FysAsShQuzyP44qQWd9puu5k1aUs7N63OTCzbBupZ22FdnbqzTkM38NKllPTu2OEqTPkOSljovsypNDtgE2176CELdnMxN/VbyPqVRaZqerq1IHR0HB2xVlAjevx93vvA+3ME7St5fUClOv/MdLqtXweCUUA5WQYLkWvcfQaB3aMm29FdxXHxtjLUVWw52Qf2l3gY0PnwQzY8fKpvmxcNjbENw2WOBQRq6HkXo6bf135tJqfbs/IGjxoesUUGCEqQkGx85uGQbpfnfgU+MpmlccJFAz1DZAkSYTLNqggTJkeTmB55dss1UmmxXEzKXhlDFxQk0nXjbujH9zQgWUv+XbKM06dqQC7aJ/uqfp7Fpe5+uoE6gNH0dfZDzaeSTpb/9UPfDBd/VhEpwNnZcL9dv2+VoH/pnkKQ72Kol6Tu4YW+2qVXL/n0GvvB9jtP0hNq1KO1b3M9yYOZqQh1kRkmSoCfU4Wgf+qx/10DZfnY1GBEkaLiRJA3XclPDraDiQ0OW9uXA2G1DSqTlqTf1ATuFKvHMmU8xN3EcXBgRrN/WjSbqQwPOk8tN/aqmjfeWTBurhV2wSbVk/p6hiva5/MMHrKkVwya42HNWMiRpapj+egTzSXPPQLAJ0jWg02mBmI19gZnTH8I0bIJO5QrqHLukWjTOqeB2VPUHUEot9fMxIx3LraiKYLVTK8a4YPr3b/W5Vs3UijEmSJM2pcbVkawUI4KmJu2VQIIJ9QqDAROt1qoQiLkFxJiEPIRVsp5SW0TQk8DoHNwrhDyFGkTKQrsLyT8SVuieJrXehxpCjcoRxE8c03fVbK87SuMVtUMMGU+UFlx69Xw8i7adn1kF6cMGT1Inl/G8WPpQejGdA2FLuKJSiJ718CypQxICcsyW1ijiX35fvOEay9PGx6CIxDUAAAAASUVORK5CYII=" alt="SETVI" style="width:100%;height:100%;object-fit:cover;display:block"></div></span><h1>Print Orders</h1></div>
       <div class="top-right">
         <div class="bell"><svg class="ic"><use href="#i-bell"/></svg><span class="dot"></span></div>
         <div class="acct">
@@ -418,6 +405,26 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
         </div>
       </div>
     </header>
+  <div class="shell">
+  <nav class="rail">
+    <a class="railitem circle" href="#"><span class="cwrap"><svg class="ic"><use href="#i-mail"/></svg></span>Compose</a>
+    <a class="railitem" href="#"><svg class="ic"><use href="#i-home"/></svg>Home</a>
+    <a class="railitem" href="#"><svg class="ic"><use href="#i-truck"/></svg>Orders</a>
+    <a class="railitem" href="#"><svg class="ic"><use href="#i-spark"/></svg>Intelligence</a>
+    <a class="railitem" href="#"><svg class="ic"><use href="#i-rfq"/></svg>RFQ</a>
+    <a class="railitem" href="#"><svg class="ic"><use href="#i-file"/></svg>Resources</a>
+    <a class="railitem" href="#"><svg class="ic"><use href="#i-bag"/></svg>Catalog</a>
+    <a class="railitem active" href="#" onclick="goOrders();return false"><svg class="ic"><use href="#i-cart"/></svg>Print Orders</a>
+    <a class="railitem" href="#"><svg class="ic"><use href="#i-cube"/></svg>Workspaces</a>
+    <a class="railitem" href="#"><svg class="ic"><use href="#i-mega"/></svg>Campaigns</a>
+    <a class="railitem" href="#"><svg class="ic"><use href="#i-send"/></svg>Outbox</a>
+    <a class="railitem" href="#"><svg class="ic"><use href="#i-printer"/></svg>Local Printer</a>
+    <div class="railband">ADMIN</div>
+    <a class="railitem" href="#"><svg class="ic"><use href="#i-sliders"/></svg>Manage</a>
+    <div class="railfoot">Super Admin</div>
+  </nav>
+
+  <div class="main">
 
     <!-- ============ PRINT ORDERS LIST ============ -->
     <section class="screen active" id="s-orders">
@@ -510,6 +517,7 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
     </section>
   </div>
 </div>
+</div>
 
 <!-- floating pill -->
 <div class="selpill" id="pill">
@@ -578,6 +586,7 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
   <symbol id="i-mail" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M14,11.51h2.42a1,1,0,0,0,.71-.29l4.58-4.58a1,1,0,0,0,0-1.42L19.29,2.8a1,1,0,0,0-1.42,0L13.29,7.38a1.05,1.05,0,0,0-.29.71v2.42A1,1,0,0,0,14,11.51Zm1-3,3.58-3.58,1,1L16,9.51H15Zm6,2a1,1,0,0,0-1,1v7a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V8.9l5.88,5.89a3,3,0,0,0,4.27,0,1,1,0,0,0,0-1.4,1,1,0,0,0-1.43,0,1,1,0,0,1-1.4,0L5.41,7.49H10a1,1,0,0,0,0-2H5a3,3,0,0,0-3,3v10a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3v-7A1,1,0,0,0,21,10.49Z"/></symbol>
   <symbol id="i-home" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M20,8h0L14,2.74a3,3,0,0,0-4,0L4,8a3,3,0,0,0-1,2.26V19a3,3,0,0,0,3,3H18a3,3,0,0,0,3-3V10.25A3,3,0,0,0,20,8ZM14,20H10V15a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1Zm5-1a1,1,0,0,1-1,1H16V15a3,3,0,0,0-3-3H11a3,3,0,0,0-3,3v5H6a1,1,0,0,1-1-1V10.25a1,1,0,0,1,.34-.75l6-5.25a1,1,0,0,1,1.32,0l6,5.25a1,1,0,0,1,.34.75Z"/></symbol>
   <symbol id="i-truck" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M1,12.5v5a1,1,0,0,0,1,1H3a3,3,0,0,0,6,0h6a3,3,0,0,0,6,0h1a1,1,0,0,0,1-1V5.5a3,3,0,0,0-3-3H11a3,3,0,0,0-3,3v2H6A3,3,0,0,0,3.6,8.7L1.2,11.9a.61.61,0,0,0-.07.14l-.06.11A1,1,0,0,0,1,12.5Zm16,6a1,1,0,1,1,1,1A1,1,0,0,1,17,18.5Zm-7-13a1,1,0,0,1,1-1h9a1,1,0,0,1,1,1v11h-.78a3,3,0,0,0-4.44,0H10Zm-2,6H4L5.2,9.9A1,1,0,0,1,6,9.5H8Zm-3,7a1,1,0,1,1,1,1A1,1,0,0,1,5,18.5Zm-2-5H8v2.78a3,3,0,0,0-4.22.22H3Z"/></symbol>
+  <symbol id="i-rfq" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M11,9h4a1,1,0,0,0,0-2H13V6a1,1,0,0,0-2,0V7a3,3,0,0,0,0,6h2a1,1,0,0,1,0,2H9a1,1,0,0,0,0,2h2v1a1,1,0,0,0,2,0V17a3,3,0,0,0,0-6H11a1,1,0,0,1,0-2Zm8-7H5A3,3,0,0,0,2,5V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V5A3,3,0,0,0,19,2Zm1,17a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V5A1,1,0,0,1,5,4H19a1,1,0,0,1,1,1Z"/></symbol>
   <symbol id="i-quote" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M11.5,20h-6a1,1,0,0,1-1-1V5a1,1,0,0,1,1-1h5V7a3,3,0,0,0,3,3h3v5a1,1,0,0,0,2,0V9s0,0,0-.06a1.31,1.31,0,0,0-.06-.27l0-.09a1.07,1.07,0,0,0-.19-.28h0l-6-6h0a1.07,1.07,0,0,0-.28-.19.29.29,0,0,0-.1,0A1.1,1.1,0,0,0,11.56,2H5.5a3,3,0,0,0-3,3V19a3,3,0,0,0,3,3h6a1,1,0,0,0,0-2Zm1-14.59L15.09,8H13.5a1,1,0,0,1-1-1ZM7.5,14h6a1,1,0,0,0,0-2h-6a1,1,0,0,0,0,2Zm4,2h-4a1,1,0,0,0,0,2h4a1,1,0,0,0,0-2Zm-4-6h1a1,1,0,0,0,0-2h-1a1,1,0,0,0,0,2Zm13.71,6.29a1,1,0,0,0-1.42,0l-3.29,3.3-1.29-1.3a1,1,0,0,0-1.42,1.42l2,2a1,1,0,0,0,1.42,0l4-4A1,1,0,0,0,21.21,16.29Z"/></symbol>
   <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.7 4.6L18 9l-4.3 1.4L12 15l-1.7-4.6L6 9l4.3-1.4Z"/><path d="M18 14l.9 2.3L21 17l-2.1.7L18 20l-.9-2.3L15 17l2.1-.7Z"/></symbol>
   <symbol id="i-bag" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M19,7H16V6A4,4,0,0,0,8,6V7H5A1,1,0,0,0,4,8V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V8A1,1,0,0,0,19,7ZM10,6a2,2,0,0,1,4,0V7H10Zm8,13a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V9H8v1a1,1,0,0,0,2,0V9h4v1a1,1,0,0,0,2,0V9h2Z"/></symbol>
