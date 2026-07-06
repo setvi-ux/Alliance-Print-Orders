@@ -178,6 +178,11 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
 .tbl-h,.tbl-r{display:grid;grid-template-columns:150px 130px 1fr 1.4fr 1.3fr 70px;align-items:center;gap:12px;padding:15px 22px}
 .tbl-h{background:var(--surface-2);border-radius:12px;border-bottom:0;padding:11px 22px;margin-bottom:8px}
 .tbl-h span{font-size:12px;color:var(--ink-2);font-weight:500;display:inline-flex;align-items:center;gap:5px}
+.tbl-h .th{cursor:pointer;user-select:none;border-radius:6px;padding:2px 6px;margin:-2px -6px}
+.tbl-h .th:hover{color:var(--ink)}
+.tbl-h .th.act{color:var(--ink);font-weight:600}
+.tbl-h .th .ic{transition:transform .12s}
+.tbl-h .th.act.asc .ic{transform:scaleY(-1)}
 .tbl-h .ic{width:13px;height:13px;stroke-width:2}
 .tbl-r{background:var(--surface);border:0;border-radius:12px;padding:20px 22px;margin-bottom:8px;cursor:pointer;transition:.1s;box-shadow:var(--sh-1)}
 .tbl-r:last-child{margin-bottom:0}
@@ -469,12 +474,12 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
           </div>
 
           <div class="tbl">
-            <div class="tbl-h">
-              <span>Order <svg class="ic"><use href="#i-sortd"/></svg></span>
-              <span>Date <svg class="ic"><use href="#i-sortd"/></svg></span>
-              <span>No. of assets <svg class="ic"><use href="#i-sortd"/></svg></span>
-              <span>Delivery <svg class="ic"><use href="#i-sortd"/></svg></span>
-              <span>Payment status <svg class="ic"><use href="#i-sortd"/></svg></span>
+            <div class="tbl-h" id="tblHead">
+              <span class="th" data-k="id" onclick="setSort('id')">Order <svg class="ic"><use href="#i-sortd"/></svg></span>
+              <span class="th" data-k="date" onclick="setSort('date')">Date <svg class="ic"><use href="#i-sortd"/></svg></span>
+              <span class="th" data-k="items" onclick="setSort('items')">No. of assets <svg class="ic"><use href="#i-sortd"/></svg></span>
+              <span class="th" data-k="city" onclick="setSort('city')">Delivery <svg class="ic"><use href="#i-sortd"/></svg></span>
+              <span class="th" data-k="status" onclick="setSort('status')">Payment status <svg class="ic"><use href="#i-sortd"/></svg></span>
               <span style="justify-self:end">Action</span>
             </div>
             <div id="ordersBody"></div>
@@ -1069,8 +1074,32 @@ function filteredOrders(){
     return true;
   });
 }
+const SORT={k:'date',d:-1};
+const STATUS_RANK={paid:0,processing:1,failed:2};
+function setSort(k){
+  if(SORT.k===k)SORT.d*=-1; else {SORT.k=k;SORT.d=(k==='date')?-1:1;}
+  renderOrders();
+}
+function sortRows(rows){
+  const k=SORT.k,d=SORT.d;
+  return [...rows].sort((a,b)=>{
+    let va,vb;
+    if(k==='items'){va=a.items;vb=b.items;}
+    else if(k==='status'){va=STATUS_RANK[a.status];vb=STATUS_RANK[b.status];}
+    else {va=a[k];vb=b[k];}
+    if(va<vb)return -1*d; if(va>vb)return 1*d; return 0;
+  });
+}
+function paintSortHead(){
+  document.querySelectorAll('#tblHead .th').forEach(el=>{
+    const on=el.dataset.k===SORT.k;
+    el.classList.toggle('act',on);
+    el.classList.toggle('asc',on&&SORT.d===1);
+  });
+}
 function renderOrders(){
-  const rows=filteredOrders(),b=document.getElementById('ordersBody');
+  const rows=sortRows(filteredOrders()),b=document.getElementById('ordersBody');
+  paintSortHead();
   b.innerHTML = rows.length? rows.map(o=>{const m=SM[o.status];return `<div class="tbl-r ${o.fresh?'fresh':''}" onclick="openOrder('${o.id}')">
     <span class="oid">${o.id}</span><span class="muted">${fmtDate(o.date)}</span><span>${o.items}</span>
     <span class="muted">${o.city}</span><span><span class="badge ${m.c}"><span class="d"></span>${m.l}</span></span>
