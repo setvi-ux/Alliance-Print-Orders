@@ -83,7 +83,7 @@ input{font-family:inherit}
 .content{padding:20px 20px 90px 14px;width:100%}
 
 /* ---------- Buttons ---------- */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:42px;padding:0 18px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--accent);background:var(--surface);color:var(--accent);transition:.14s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 18px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--accent);background:var(--surface);color:var(--accent);transition:.14s}
 .btn:hover{background:var(--accent-soft)}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
 .btn.primary:hover{background:var(--accent-hover)}
@@ -114,7 +114,7 @@ input{font-family:inherit}
 /* ---------- Filter row ---------- */
 .filters{display:flex;align-items:center;gap:12px;margin-bottom:18px}
 .filters .searchpill{flex:1;max-width:360px}
-.select,.searchpill{height:44px;border:1px solid var(--border-2);background:var(--surface);border-radius:999px;font-size:14px;color:var(--ink);display:inline-flex;align-items:center;gap:9px;padding:0 16px}
+.select,.searchpill{height:40px;border:1px solid var(--border-2);background:var(--surface);border-radius:999px;font-size:14px;color:var(--ink);display:inline-flex;align-items:center;gap:9px;padding:0 16px}
 .selwrap{position:relative;display:inline-flex}
 .selwrap>.ic{position:absolute;right:15px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--ink-3);width:16px;height:16px}
 select.select{appearance:none;-webkit-appearance:none;padding:0 40px 0 16px;cursor:pointer;color:var(--ink-3);font-weight:400;outline:none}
@@ -201,12 +201,11 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
 .empty p{margin:0 0 20px;color:var(--ink-2);max-width:340px}
 
 /* ---------- Asset tabs + grid ---------- */
-/* DS Segmented Controller (M) — app style: transparent group, solid active */
-.tabs{display:flex;gap:8px;align-items:center;background:transparent}
-.tab{border:0;background:transparent;color:var(--ink-2);font-size:14px;line-height:20px;font-weight:600;padding:8px 16px;border-radius:999px;cursor:pointer;transition:.12s;font-family:inherit}
-.tab:hover{background:var(--surface-2)}
-.tab.on{background:var(--accent);color:#fff}
-.tab.on:hover{background:var(--accent-hover)}
+/* DS Segmented Controller (M): white pill container, Brand Subtle Hover active */
+.tabs{display:inline-flex;gap:8px;align-items:center;background:var(--surface);border-radius:999px;box-shadow:var(--sh-1)}
+.tab{border:0;background:transparent;color:var(--ink-3);font-size:14px;line-height:24px;font-weight:600;padding:8px 16px;border-radius:999px;cursor:pointer;transition:.12s;font-family:inherit;white-space:nowrap}
+.tab:hover{color:var(--ink-2)}
+.tab.on{background:var(--accent-border);color:var(--accent)}
 .toolbar2{display:flex;align-items:center;margin-bottom:20px;gap:14px}
 
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
@@ -500,9 +499,9 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
         </div>
         <div class="toolbar2">
           <div class="tabs" id="tabs">
-            <button class="tab on" data-f="all" onclick="setType('all')">All</button>
-            <button class="tab" data-f="static" onclick="setType('static')">Ready to Print</button>
-            <button class="tab" data-f="dynamic" onclick="setType('dynamic')">Customizable</button>
+            <button class="tab on" data-f="all" onclick="setType('all')">All <span id="cAll"></span></button>
+            <button class="tab" data-f="static" onclick="setType('static')">Ready to Print <span id="cRtp"></span></button>
+            <button class="tab" data-f="dynamic" onclick="setType('dynamic')">Customizable <span id="cCust"></span></button>
           </div>
           <div class="grow"></div>
           <div class="searchpill"><svg class="ic sm"><use href="#i-search"/></svg><input id="aSearch" placeholder="Search assets…" oninput="renderGrid()"></div>
@@ -1166,6 +1165,9 @@ document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.overlay.open').forEach(o=>o.classList.remove('open'));});
 
 // init
+document.getElementById('cAll').textContent=`(${ASSETS.length})`;
+document.getElementById('cRtp').textContent=`(${ASSETS.filter(a=>!a.dyn).length})`;
+document.getElementById('cCust').textContent=`(${ASSETS.filter(a=>a.dyn).length})`;
 renderGrid(); renderKPIs(); renderOrders(); setOrdersState('filled');
 </script>
 </body>
