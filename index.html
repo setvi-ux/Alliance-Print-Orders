@@ -226,6 +226,71 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
 .atag{font-size:12px;line-height:16px;font-weight:600;padding:4px 8px;border-radius:16px}
 .atag.rtp{background:var(--surface);border:1px solid var(--border-2);color:var(--ink-2)}
 .atag.cust{background:var(--accent-soft);color:var(--accent)}
+/* Figma resource-card badge: pill overlaid on bottom-right of thumbnail */
+.tbadge{position:absolute;right:12px;bottom:12px;z-index:2;font-size:12px;line-height:16px;font-weight:600;padding:4px 8px;border-radius:16px;box-shadow:0 2px 4px rgba(48,54,60,.16);pointer-events:none;white-space:nowrap}
+.tbadge.rtp{background:var(--surface);color:var(--ink-2)}
+.tbadge.cust{background:var(--accent);color:#fff}
+
+/* ---------- Resources screen ---------- */
+.res-search{display:flex;align-items:center;gap:10px;height:44px;padding:0 16px;background:var(--surface);border:1px solid var(--border-2);border-radius:999px;max-width:620px;margin:0 auto 24px;color:var(--ink-3)}
+.res-search input{border:0;outline:0;background:transparent;font-size:14px;color:var(--ink);width:100%}
+.res-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px}
+.res-head h2{margin:0;font-size:22px;font-weight:700;line-height:1.2}
+.crumbs{font-size:13px;color:var(--ink-3);margin-top:5px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.crumbs b{color:var(--accent);font-weight:600}
+.res-actions{display:flex;align-items:center;gap:10px;margin-left:auto}
+.res-fav{display:inline-flex;align-items:center;gap:4px;height:40px;padding:0 16px;border:1px solid var(--border-2);background:var(--surface);color:var(--ink-3);font-size:14px;font-weight:600;line-height:20px;border-radius:999px;cursor:pointer;transition:.12s}
+.res-fav:hover{background:var(--surface-2)}
+.res-fav .ic{width:20px;height:20px}
+.res-more{width:40px;height:40px;border-radius:999px;border:1px solid var(--border-2);background:var(--surface);color:var(--ink-3);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.12s;flex-shrink:0}
+.res-more:hover{background:var(--surface-2)}
+.res-more .ic{width:20px;height:20px}
+.res-count{font-size:16px;font-weight:700;margin:4px 0 16px}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.rcard{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:12px;box-shadow:var(--sh-1);transition:.14s;display:flex;flex-direction:column;gap:12px}
+.rcard:hover{box-shadow:var(--sh-2)}
+.rcard.inpo{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.rthumb{height:180px;border-radius:12px;overflow:hidden;background:var(--surface-2);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.rname{font-size:14px;font-weight:600;line-height:20px;color:var(--ink-2);cursor:pointer;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:40px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.rfoot{display:flex;align-items:center;justify-content:space-between}
+.rtype{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:400;color:var(--ink-3)}
+.rtype .ic{width:24px;height:24px}
+.rkebab{width:40px;height:40px;border-radius:999px;border:0;background:transparent;color:var(--ink-3);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.12s}
+.rkebab:hover{background:var(--surface-3);color:var(--ink)}
+.inpo-flag{position:absolute;top:20px;left:20px;z-index:2;display:inline-flex;align-items:center;gap:5px;background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:4px 9px 4px 7px;border-radius:999px;box-shadow:var(--sh-1)}
+.rmenu{position:fixed;z-index:60;width:278px;max-height:calc(100vh - 24px);overflow-y:auto;background:var(--surface);border:1px solid var(--border);border-radius:28px;box-shadow:var(--sh-2);padding:8px;display:none}
+.rmenu.open{display:flex;flex-direction:column;gap:4px}
+.rmi{display:flex;align-items:center;gap:8px;height:48px;padding:0 12px;border-radius:999px;cursor:pointer;color:var(--ink-2);font-size:14px;line-height:20px}
+.rmi:hover{background:var(--surface-3)}
+.rmi:active{background:var(--surface-3)}
+.rmi .ic{width:24px;height:24px;color:var(--ink-3);flex-shrink:0}
+.rmi .lbl{flex:1}
+.rmi .chev{width:24px;height:24px;color:var(--ink-3)}
+.rmi.primary .ic{color:var(--accent)}
+.rmi-badge{background:var(--accent);color:#f8f9fa;font-size:12px;line-height:16px;font-weight:600;padding:4px 8px;border-radius:16px}
+
+/* ---------- Print Order Preview ---------- */
+.po-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin-bottom:20px}
+.po-item{display:flex;flex-direction:column;align-items:stretch;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px}
+.po-thumb{width:100%;height:200px;border-radius:12px;overflow:hidden;background:var(--surface-2);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.po-thumb img{width:100%;height:100%;object-fit:cover;object-position:top}
+.po-info{flex:1;min-width:0}
+.po-name{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.po-sub{display:flex;align-items:center;gap:8px;margin-top:7px;font-size:13px;color:var(--ink-3);flex-wrap:wrap}
+.po-actions{display:flex;align-items:center;gap:8px;flex-shrink:0;justify-content:flex-end;margin-top:2px}
+.po-summary{display:flex;align-items:center;gap:14px}
+.sum{font-size:14px;font-weight:600;color:var(--ink)}
+.sum span{color:var(--ink-3);font-weight:400}
+.po-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px}
+/* --- TRIAL: Print Order Preview surface treatment (subtle popup bg, primary item) --- */
+#ov-preview .modal{background:var(--bg);max-width:none;width:calc(100vw - 80px);height:calc(100vh - 80px);max-height:calc(100vh - 80px)}
+#ov-preview .po-item{background:var(--surface);box-shadow:var(--sh-1)}
+#ov-preview .m-body{flex:1 1 auto}
+#ov-preview .m-foot{padding:16px 26px 24px}
+.po-empty .glyph{width:110px;height:110px;border-radius:50%;background:radial-gradient(circle at 50% 40%,var(--surface-2),transparent 70%);display:flex;align-items:center;justify-content:center;color:var(--ink-3);margin-bottom:6px}
+.po-empty .glyph .ic{width:48px;height:48px;stroke-width:1.3}
+.po-empty h3{margin:8px 0 6px;font-size:18px;font-weight:700;color:var(--ink)}
+.po-empty p{margin:0 0 20px;color:var(--ink-2);max-width:340px}
 .athumb{height:180px;border-radius:12px;overflow:hidden;cursor:pointer;background:var(--surface-2);display:flex;align-items:center;justify-content:center;position:relative}
 .aname{font-size:15px;font-weight:600;margin:14px 0 12px;line-height:1.35;cursor:pointer;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:41px}
 .arow{display:flex;justify-content:space-between;font-size:13.5px;padding:7px 0;border-top:1px solid var(--border)}
@@ -291,6 +356,10 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
 .pchip .ic{width:13px;height:13px}
 
 .dv-right{flex:1;min-width:0;display:flex;flex-direction:column}
+#ov-detail .modal.solo{max-width:560px}
+#ov-detail .m-body.solo{justify-content:center}
+#ov-detail .m-body.solo .dv-right{display:none}
+#ov-detail .m-body.solo .dv-left{flex:1 1 auto;width:100%;max-width:420px}
 .desc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px 20px;margin-bottom:20px}
 .desc-h{display:flex;align-items:center;justify-content:space-between;font-size:16px;font-weight:600;margin-bottom:12px}
 .desc-body p{margin:0 0 14px;font-size:13.5px;color:var(--ink-2);line-height:1.5}
@@ -385,8 +454,8 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
 .cfgchips .c .ic{width:12px;height:12px}
 
 /* toast */
-.toast{position:fixed;bottom:26px;left:calc(50% + 43px);transform:translateX(-50%) translateY(18px);background:var(--ink);color:#fff;padding:13px 20px;border-radius:999px;font-size:14px;font-weight:500;box-shadow:var(--sh-3);display:flex;align-items:center;gap:10px;opacity:0;pointer-events:none;transition:.24s;z-index:90}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast{position:fixed;bottom:26px;right:26px;left:auto;transform:translateY(18px);background:var(--ink);color:#fff;padding:13px 20px;border-radius:999px;font-size:14px;font-weight:500;box-shadow:var(--sh-3);display:flex;align-items:center;gap:10px;opacity:0;pointer-events:none;transition:.24s;z-index:90}
+.toast.show{opacity:1;transform:translateY(0)}
 .toast .ic{color:#7FE3AB}
 
 .screen{display:none} .screen.active{display:block}
@@ -399,7 +468,7 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
 <div class="app">
   <!-- Rail -->
   <header class="topbar">
-      <div class="tb-left"><span class="tb-logo"><div class="logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAABKJJREFUeAHdml9MW1Ucx7/ntrR0tB0wKlP2UNiikDEhJlPi1Aw1BiNk1aeZTI1xL/oyE6cPvlAffNKH4av6oDNxvhhwJlv8N+OiycSHMk1sNEqjYW6uY6zQtaX0np3fWVja0Y1b+J0C/SQN9/b2NvfD99zf+d3bK3AT7u7BvXZB7pOQEUCEsTGICYGYbde9hfhooniDuLEUjjRavvywBF7FBkZYOGKnlWhidEav63eVnPDlT6mlXtQGMZmp6ydJi9YoOdSOHNFrNWgnlWBnJCxEfhI1iHSJfsuyrpuuF9xbAwi9GwEHVsGOuCWEGpoS6wHfgx1ofqMfosELDpTbPjekXPNzz/J7EXxuN/zP3Atmwm6sMd6eNjS/3g9XaxAmWFPBxpcfMpFaCWsiSIVkS/RJ1G1vgWmqLhhQiQWf381WSJajaoJUSCg1b89dqCZVETRdSG6HUcGVlv+5z8+CC2OCnh0takgOVJSaTOeQHD6J3MQUuDAiSIVks5oCKiE3cQ6Xhk/AVpKcsApS+W86/FhFhYRSu/LxOOuwLDkmMNHwRCcaX9lTUfnP/5VUqZ3EwoUUTGGBCTpv7LnKhhcVIeH3wCQuEbo7Cgbs9LweZlbAC09Xq6N9SNA/uFMv586egwnYBBfJjv+jD7ZenYck4ASaJ3172pH75d+KR8FysAsShQuzyP44qQWd9puu5k1aUs7N63OTCzbBupZ22FdnbqzTkM38NKllPTu2OEqTPkOSljovsypNDtgE2176CELdnMxN/VbyPqVRaZqerq1IHR0HB2xVlAjevx93vvA+3ME7St5fUClOv/MdLqtXweCUUA5WQYLkWvcfQaB3aMm29FdxXHxtjLUVWw52Qf2l3gY0PnwQzY8fKpvmxcNjbENw2WOBQRq6HkXo6bf135tJqfbs/IGjxoesUUGCEqQkGx85uGQbpfnfgU+MpmlccJFAz1DZAkSYTLNqggTJkeTmB55dss1UmmxXEzKXhlDFxQk0nXjbujH9zQgWUv+XbKM06dqQC7aJ/uqfp7Fpe5+uoE6gNH0dfZDzaeSTpb/9UPfDBd/VhEpwNnZcL9dv2+VoH/pnkKQ72Kol6Tu4YW+2qVXL/n0GvvB9jtP0hNq1KO1b3M9yYOZqQh1kRkmSoCfU4Wgf+qx/10DZfnY1GBEkaLiRJA3XclPDraDiQ0OW9uXA2G1DSqTlqTf1ATuFKvHMmU8xN3EcXBgRrN/WjSbqQwPOk8tN/aqmjfeWTBurhV2wSbVk/p6hiva5/MMHrKkVwya42HNWMiRpapj+egTzSXPPQLAJ0jWg02mBmI19gZnTH8I0bIJO5QrqHLukWjTOqeB2VPUHUEot9fMxIx3LraiKYLVTK8a4YPr3b/W5Vs3UijEmSJM2pcbVkawUI4KmJu2VQIIJ9QqDAROt1qoQiLkFxJiEPIRVsp5SW0TQk8DoHNwrhDyFGkTKQrsLyT8SVuieJrXehxpCjcoRxE8c03fVbK87SuMVtUMMGU+UFlx69Xw8i7adn1kF6cMGT1Inl/G8WPpQejGdA2FLuKJSiJ718CypQxICcsyW1ijiX35fvOEay9PGx6CIxDUAAAAASUVORK5CYII=" alt="SETVI" style="width:100%;height:100%;object-fit:cover;display:block"></div></span><h1>Print Orders</h1></div>
+      <div class="tb-left"><span class="tb-logo"><div class="logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAABKJJREFUeAHdml9MW1Ucx7/ntrR0tB0wKlP2UNiikDEhJlPi1Aw1BiNk1aeZTI1xL/oyE6cPvlAffNKH4av6oDNxvhhwJlv8N+OiycSHMk1sNEqjYW6uY6zQtaX0np3fWVja0Y1b+J0C/SQN9/b2NvfD99zf+d3bK3AT7u7BvXZB7pOQEUCEsTGICYGYbde9hfhooniDuLEUjjRavvywBF7FBkZYOGKnlWhidEav63eVnPDlT6mlXtQGMZmp6ydJi9YoOdSOHNFrNWgnlWBnJCxEfhI1iHSJfsuyrpuuF9xbAwi9GwEHVsGOuCWEGpoS6wHfgx1ofqMfosELDpTbPjekXPNzz/J7EXxuN/zP3Atmwm6sMd6eNjS/3g9XaxAmWFPBxpcfMpFaCWsiSIVkS/RJ1G1vgWmqLhhQiQWf381WSJajaoJUSCg1b89dqCZVETRdSG6HUcGVlv+5z8+CC2OCnh0takgOVJSaTOeQHD6J3MQUuDAiSIVks5oCKiE3cQ6Xhk/AVpKcsApS+W86/FhFhYRSu/LxOOuwLDkmMNHwRCcaX9lTUfnP/5VUqZ3EwoUUTGGBCTpv7LnKhhcVIeH3wCQuEbo7Cgbs9LweZlbAC09Xq6N9SNA/uFMv586egwnYBBfJjv+jD7ZenYck4ASaJ3172pH75d+KR8FysAsShQuzyP44qQWd9puu5k1aUs7N63OTCzbBupZ22FdnbqzTkM38NKllPTu2OEqTPkOSljovsypNDtgE2176CELdnMxN/VbyPqVRaZqerq1IHR0HB2xVlAjevx93vvA+3ME7St5fUClOv/MdLqtXweCUUA5WQYLkWvcfQaB3aMm29FdxXHxtjLUVWw52Qf2l3gY0PnwQzY8fKpvmxcNjbENw2WOBQRq6HkXo6bf135tJqfbs/IGjxoesUUGCEqQkGx85uGQbpfnfgU+MpmlccJFAz1DZAkSYTLNqggTJkeTmB55dss1UmmxXEzKXhlDFxQk0nXjbujH9zQgWUv+XbKM06dqQC7aJ/uqfp7Fpe5+uoE6gNH0dfZDzaeSTpb/9UPfDBd/VhEpwNnZcL9dv2+VoH/pnkKQ72Kol6Tu4YW+2qVXL/n0GvvB9jtP0hNq1KO1b3M9yYOZqQh1kRkmSoCfU4Wgf+qx/10DZfnY1GBEkaLiRJA3XclPDraDiQ0OW9uXA2G1DSqTlqTf1ATuFKvHMmU8xN3EcXBgRrN/WjSbqQwPOk8tN/aqmjfeWTBurhV2wSbVk/p6hiva5/MMHrKkVwya42HNWMiRpapj+egTzSXPPQLAJ0jWg02mBmI19gZnTH8I0bIJO5QrqHLukWjTOqeB2VPUHUEot9fMxIx3LraiKYLVTK8a4YPr3b/W5Vs3UijEmSJM2pcbVkawUI4KmJu2VQIIJ9QqDAROt1qoQiLkFxJiEPIRVsp5SW0TQk8DoHNwrhDyFGkTKQrsLyT8SVuieJrXehxpCjcoRxE8c03fVbK87SuMVtUMMGU+UFlx69Xw8i7adn1kF6cMGT1Inl/G8WPpQejGdA2FLuKJSiJ718CypQxICcsyW1ijiX35fvOEay9PGx6CIxDUAAAAASUVORK5CYII=" alt="SETVI" style="width:100%;height:100%;object-fit:cover;display:block"></div></span><h1 id="topTitle">Print Orders</h1></div>
       <div class="top-right">
         <div class="bell"><svg class="ic"><use href="#i-bell"/></svg><span class="dot"></span></div>
         <div class="acct">
@@ -416,9 +485,9 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
     <a class="railitem" href="#"><svg class="ic"><use href="#i-truck"/></svg>Orders</a>
     <a class="railitem" href="#"><svg class="ic"><use href="#i-spark"/></svg>Intelligence</a>
     <a class="railitem" href="#"><svg class="ic"><use href="#i-rfq"/></svg>RFQ</a>
-    <a class="railitem" href="#"><svg class="ic"><use href="#i-file"/></svg>Resources</a>
+    <a class="railitem" id="railResources" href="#" onclick="openResources();return false"><svg class="ic"><use href="#i-file"/></svg>Resources</a>
     <a class="railitem" href="#"><svg class="ic"><use href="#i-bag"/></svg>Catalog</a>
-    <a class="railitem active" href="#" onclick="goOrders();return false"><svg class="ic"><use href="#i-cart"/></svg>Print Orders</a>
+    <a class="railitem active" id="railPrint" href="#" onclick="goOrders();return false"><svg class="ic"><use href="#i-cart"/></svg>Print Orders</a>
     <a class="railitem" href="#"><svg class="ic"><use href="#i-cube"/></svg>Workspaces</a>
     <a class="railitem" href="#"><svg class="ic"><use href="#i-mega"/></svg>Campaigns</a>
     <a class="railitem" href="#"><svg class="ic"><use href="#i-send"/></svg>Outbox</a>
@@ -470,7 +539,6 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
                 </div>
               </div>
             </div>
-            <button class="btn primary" onclick="openNew()"><svg class="ic sm"><use href="#i-plus"/></svg> New</button>
           </div>
 
           <div class="tbl">
@@ -515,6 +583,29 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
       </div>
     </section>
 
+    <!-- ============ RESOURCES ============ -->
+    <section class="screen" id="s-resources">
+      <div class="content">
+        <div class="res-search">
+          <svg class="ic sm"><use href="#i-search"/></svg>
+          <input id="resSearch" placeholder="Search resources…" oninput="renderResources()">
+        </div>
+        <div class="res-head">
+          <button class="iconcirc" aria-label="Back"><svg class="ic"><use href="#i-arr-l"/></svg></button>
+          <div>
+            <h2>Signage</h2>
+            <div class="crumbs"><span>All</span> / <span>US – North America</span> / <span>Alliance Distribution</span> / <b>Signage</b></div>
+          </div>
+          <div class="res-actions">
+            <button class="res-fav"><svg class="ic"><use href="#i-mn-star"/></svg> Favorites</button>
+            <button class="res-more" aria-label="More"><svg class="ic"><use href="#i-dots-h"/></svg></button>
+          </div>
+        </div>
+        <div class="res-count">Resources (<span id="resCount">0</span>)</div>
+        <div class="res-grid" id="resGrid"></div>
+      </div>
+    </section>
+
     <!-- ============ ORDER DETAIL ============ -->
     <section class="screen" id="s-detail">
       <div class="content" id="detailBody"></div>
@@ -525,13 +616,21 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
 
 <!-- floating pill -->
 <div class="selpill" id="pill">
-  <div class="sp-count"><span class="sp-badge" id="pillCount">0</span> Selected</div>
+  <div class="sp-count"><span class="sp-badge" id="pillCount">0</span> selected</div>
   <div class="sp-div"></div>
-  <button class="sp-print" onclick="openCheckout()"><svg class="ic sm"><use href="#i-printer"/></svg> Send to Print</button>
+  <button class="sp-print" onclick="openPreview()"><svg class="ic sm"><use href="#i-arr-r"/></svg> Print Order Preview</button>
   <button class="sp-cancel" onclick="clearSel()">Cancel</button>
 </div>
 
 <!-- ============ ASSET DETAIL / CUSTOMIZE MODAL ============ -->
+<div class="overlay" id="ov-preview">
+  <div class="modal">
+    <div class="m-head"><h2>Print Order Preview</h2><button class="x" onclick="closeOv('ov-preview')"><svg class="ic"><use href="#i-x"/></svg></button></div>
+    <div class="m-body" style="display:block;padding:20px 26px" id="poBody"></div>
+    <div class="m-foot" id="poFoot" style="align-items:center"></div>
+  </div>
+</div>
+
 <div class="overlay" id="ov-detail">
   <div class="modal">
     <div class="m-head"><h2 id="dName">Asset</h2><button class="x" onclick="closeOv('ov-detail')"><svg class="ic"><use href="#i-x"/></svg></button></div>
@@ -542,13 +641,6 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
         <div class="dv-nav"><button class="navbtn" id="dPrev" onclick="dNav(-1)"><svg class="ic sm"><use href="#i-arr-l"/></svg></button><span class="pg" id="dPg">Page 1 of 1</span><button class="navbtn" id="dNext" onclick="dNav(1)"><svg class="ic sm"><use href="#i-arr-r"/></svg></button></div>
       </div>
       <div class="dv-right">
-        <div class="desc-card">
-          <div class="desc-h" onclick="toggleDesc()" style="cursor:pointer;user-select:none">Description <svg class="ic sm" id="descChev" style="color:var(--ink-3);transition:transform .18s"><use href="#i-cu"/></svg></div>
-          <div class="desc-body" id="descBody">
-            <p id="dDesc"></p>
-            <div id="dMeta"></div>
-          </div>
-        </div>
         <div id="dCust" style="display:none">
           <div class="cust-h">Customize</div>
           <div class="crow"><span class="lbl">Add QR codes</span><div class="switch" id="swQR" onclick="toggleQR()"></div></div>
@@ -557,7 +649,7 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
               <input id="qrInput" placeholder="e.g. 1, 2, 3" oninput="qrNormalize(this)">
               <button class="qr-gen" id="qrGen" onclick="generateQR()"><svg class="ic sm"><use href="#i-qr"/></svg> Generate QR</button>
             </div>
-            <div class="qr-help">Enter machine numbers separated by comma.</div>
+            <div class="qr-help">Enter machine numbers separated by comma or space.</div>
             <div class="qr-chips" id="qrChips"></div>
           </div>
           <div class="crow" style="margin-top:18px"><span class="lbl">Add cover page</span><div class="switch" id="swCover" onclick="toggleCover()"></div></div>
@@ -628,6 +720,24 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
   <symbol id="i-card" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M7,15h3a1,1,0,0,0,0-2H7a1,1,0,0,0,0,2ZM19,5H5A3,3,0,0,0,2,8v9a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V8A3,3,0,0,0,19,5Zm1,12a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V11H20Zm0-8H4V8A1,1,0,0,1,5,7H19a1,1,0,0,1,1,1Z"/></symbol>
   <symbol id="i-pkg" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M20.49,7.52a.19.19,0,0,1,0-.08.17.17,0,0,1,0-.07l0-.09-.06-.15,0,0h0l0,0,0,0a.48.48,0,0,0-.09-.11l-.09-.08h0l-.05,0,0,0L16.26,4.45h0l-3.72-2.3A.85.85,0,0,0,12.25,2h-.08a.82.82,0,0,0-.27,0h-.1a1.13,1.13,0,0,0-.33.13L4,6.78l-.09.07-.09.08L3.72,7l-.05.06,0,0-.06.15,0,.09v.06a.69.69,0,0,0,0,.2v8.73a1,1,0,0,0,.47.85l7.5,4.64h0l0,0,.15.06.08,0a.86.86,0,0,0,.52,0l.08,0,.15-.06,0,0h0L20,17.21a1,1,0,0,0,.47-.85V7.63S20.49,7.56,20.49,7.52ZM12,4.17l1.78,1.1L8.19,8.73,6.4,7.63Zm-1,15L5.5,15.81V9.42l5.5,3.4Zm1-8.11L10.09,9.91l5.59-3.47L17.6,7.63Zm6.5,4.72L13,19.2V12.82l5.5-3.4Z"/></symbol>
   <symbol id="i-refresh" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M21,11a1,1,0,0,0-1,1,8.05,8.05,0,1,1-2.22-5.5h-2.4a1,1,0,0,0,0,2h4.53a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4.77A10,10,0,1,0,22,12,1,1,0,0,0,21,11Z"/></symbol>
+  <symbol id="i-dots" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 5a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 5a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 5a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2.5l2.9 5.88 6.49.94-4.7 4.58 1.11 6.46L12 17.9l-5.8 3.05 1.11-6.46-4.7-4.58 6.49-.94z"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 3a1 1 0 0 1 1 1v8.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.42l2.3 2.3V4a1 1 0 0 1 1-1zM5 18a1 1 0 0 1 1 1v1h12v-1a1 1 0 1 1 2 0v1a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-1a1 1 0 0 1 1-1z"/></symbol>
+  <symbol id="i-easel" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M13 3a1 1 0 1 0-2 0v1H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h5.28l-1.23 3.68a1 1 0 0 0 1.9.64L11.05 17h1.9l1.1 3.32a1 1 0 0 0 1.9-.64L14.72 16H20a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-7zm7 3v8H4V6z"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M9.5 14.5a1 1 0 0 0 1.42 0l3.58-3.58a1 1 0 0 0-1.42-1.42L9.5 13.08a1 1 0 0 0 0 1.42zm-2.62.62a2.5 2.5 0 0 1 0-3.54l2-2a1 1 0 0 0-1.42-1.42l-2 2a4.5 4.5 0 0 0 6.36 6.36l2-2a1 1 0 0 0-1.42-1.42l-2 2a2.5 2.5 0 0 1-3.52 0zm10.24-6.24a2.5 2.5 0 0 0 0-3.54 2.5 2.5 0 0 0-3.54 0l-2 2a1 1 0 0 0 1.42 1.42l2-2a1 1 0 0 1 1.42 0 1 1 0 0 1 0 1.42l-2 2a1 1 0 0 0 1.42 1.42z"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16zm0 2.75A1.25 1.25 0 1 0 12 9.25 1.25 1.25 0 0 0 12 6.75zM11 11a1 1 0 0 0 0 2v3a1 1 0 0 0 1 1h1a1 1 0 0 0 0-2v-3a1 1 0 0 0-1-1z"/></symbol>
+  <symbol id="i-mn-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M4.2 7.6 12 13l7.8-5.4"/></symbol>
+  <symbol id="i-mn-star" viewBox="0 0 24 24"><path d="M12 3.6l2.55 5.17 5.7.83-4.12 4.02.97 5.68L12 16.6l-5.07 2.7.97-5.68L3.75 9.6l5.7-.83z"/></symbol>
+  <symbol id="i-mn-dl" viewBox="0 0 24 24"><path d="M12 3.5v11"/><path d="M8 10.5l4 4 4-4"/><path d="M4.5 16.5v2A1.5 1.5 0 0 0 6 20h12a1.5 1.5 0 0 0 1.5-1.5v-2"/></symbol>
+  <symbol id="i-mn-easel-check" viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="11" rx="1.8"/><path d="M12 15v3.2"/><path d="M8.6 20.4 12 18l3.4 2.4"/><path d="M9.4 9.1l1.7 1.7 3.3-3.4"/></symbol>
+  <symbol id="i-mn-easel-plus" viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="11" rx="1.8"/><path d="M12 15v3.2"/><path d="M8.6 20.4 12 18l3.4 2.4"/><path d="M12 6.6v4.6M9.7 8.9h4.6"/></symbol>
+  <symbol id="i-mn-ai" viewBox="0 0 24 24"><path d="M11 4.2l1.5 3.9 3.9 1.5-3.9 1.5L11 15l-1.5-3.9L5.6 9.6l3.9-1.5z"/><path d="M17.5 14l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></symbol>
+  <symbol id="i-mn-cart" viewBox="0 0 24 24"><path d="M3.5 4.5H6l1.6 9.2a1.6 1.6 0 0 0 1.58 1.3h7.05a1.6 1.6 0 0 0 1.57-1.25L20.3 7.5H7"/><circle cx="9.8" cy="19" r="1.2"/><circle cx="17" cy="19" r="1.2"/></symbol>
+  <symbol id="i-mn-link" viewBox="0 0 24 24"><path d="M10.5 13.5a3.2 3.2 0 0 1 0-4.5l2.2-2.2a3.2 3.2 0 0 1 4.5 4.5l-1.3 1.3"/><path d="M13.5 10.5a3.2 3.2 0 0 1 0 4.5l-2.2 2.2a3.2 3.2 0 0 1-4.5-4.5l1.3-1.3"/></symbol>
+  <symbol id="i-mn-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11.2v5"/><path d="M12 7.9h.01"/></symbol>
+  <symbol id="i-mn-chev" viewBox="0 0 24 24"><path d="M10 7.5l4.5 4.5-4.5 4.5"/></symbol>
+  <symbol id="i-file-pdf" viewBox="0 0 24 24"><path fill="#e5252a" stroke="none" d="M6 2h7l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path fill="#ffffff" stroke="none" opacity=".92" d="M13 2v4a1 1 0 0 0 1 1h4z"/></symbol>
+  <symbol id="i-dots-h" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M5 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></symbol>
 </svg>
 
 <script>
@@ -688,7 +798,7 @@ function mul(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15
 function fauxQR(seed,px){const n=21,m=px/n;let r=mul(hashStr(String(seed)||'x')),o='';const f=(x,y)=>`<rect x="${x*m}" y="${y*m}" width="${7*m}" height="${7*m}" fill="#111"/><rect x="${(x+1)*m}" y="${(y+1)*m}" width="${5*m}" height="${5*m}" fill="#fff"/><rect x="${(x+2)*m}" y="${(y+2)*m}" width="${3*m}" height="${3*m}" fill="#111"/>`;
   for(let y=0;y<n;y++)for(let x=0;x<n;x++){if((x<8&&y<8)||(x>n-9&&y<8)||(x<8&&y>n-9))continue;if(r()>0.5)o+=`<rect x="${x*m}" y="${y*m}" width="${m}" height="${m}" fill="#111"/>`;}
   o+=f(0,0)+f(n-7,0)+f(0,n-7);return `<svg width="${px}" height="${px}" viewBox="0 0 ${px} ${px}"><rect width="${px}" height="${px}" fill="#fff"/>${o}</svg>`;}
-function parseList(s){return (s||'').split(',').map(x=>x.trim()).filter(Boolean);}
+function parseList(s){return (s||'').split(/[\s,]+/).map(x=>x.trim()).filter(Boolean);}
 function fmtDate(iso){return new Date(iso).toLocaleDateString('en-US',{day:'2-digit',month:'short',year:'numeric'});}
 
 /* ---- real client cover artwork (base64) ---- */
@@ -757,9 +867,8 @@ function renderGrid(){
     return `<div class="acard ${sel?'selected':''}">
       <div class="acard-top">
         <div class="${cb}" ${cbTitle} onclick="handleCb('${a.id}')"><svg class="ic"><use href="#i-check"/></svg></div>
-        <span class="atag ${dyn?'cust':'rtp'}">${dyn?'Customizable':'Ready to Print'}</span>
       </div>
-      <div class="athumb" onclick="openDetail('${a.id}')">${assetThumb(a)}</div>
+      <div class="athumb" onclick="openDetail('${a.id}')">${assetThumb(a)}<span class="tbadge ${dyn?'cust':'rtp'}">${dyn?'Customizable':'Ready to Print'}</span></div>
       <div class="aname" onclick="openDetail('${a.id}')" title="${a.name}">${a.name}</div>
       <div class="arow"><span class="k">Brand</span><span class="v">${a.brand}</span></div>
       <div class="arow"><span class="k">Segment</span><span class="v">${a.segment}</span></div>
@@ -772,22 +881,17 @@ function renderGrid(){
 function setType(t){activeType=t;document.querySelectorAll('#tabs .tab').forEach(b=>b.classList.toggle('on',b.getAttribute('data-f')===t));renderGrid();}
 function handleCb(id){const a=ASSETS.find(x=>x.id===id);if(a.type==='dynamic'&&!selected[id])openDetail(id);else toggleSel(id);}
 function toggleSel(id){if(selected[id]){delete selected[id];delete config[id];}else selected[id]=true;renderGrid();}
-function clearSel(){Object.keys(selected).forEach(k=>delete selected[k]);Object.keys(config).forEach(k=>delete config[k]);renderGrid();}
+function clearSel(){Object.keys(selected).forEach(k=>delete selected[k]);Object.keys(config).forEach(k=>delete config[k]);renderGrid();renderResources();renderPreview();updatePill();}
 function updatePill(){
   const n=Object.keys(selected).length;
   document.getElementById('pillCount').textContent=n;
-  const show = n>0 && document.getElementById('s-new').classList.contains('active');
-  document.getElementById('pill').classList.toggle('show',show);
+  const onNew=document.getElementById('s-new').classList.contains('active');
+  const onRes=document.getElementById('s-resources').classList.contains('active');
+  document.getElementById('pill').classList.toggle('show', n>0 && (onNew||onRes));
 }
 
 /* ================= DETAIL / CUSTOMIZE ================= */
 let D={};
-function toggleDesc(){
-  const b=document.getElementById('descBody'), ch=document.getElementById('descChev');
-  const closed = b.style.display==='none';
-  b.style.display = closed?'block':'none';
-  ch.style.transform = closed?'rotate(0deg)':'rotate(180deg)';
-}
 function openDetail(id){
   const a=ASSETS.find(x=>x.id===id), cfg=config[id], dyn=a.type==='dynamic';
   D={a,id,dyn,inCart:!!selected[id],page:1,
@@ -796,13 +900,8 @@ function openDetail(id){
      coverOn: dyn?(cfg?cfg.cover:false):false,
      coverVariant: cfg?(cfg.coverVariant||'c1'):'c1'};
   document.getElementById('dName').textContent=a.name;
-  document.getElementById('dDesc').textContent=a.desc;
-  document.getElementById('dMeta').innerHTML=
-    `<div class="kv"><span class="k">Brand</span><span class="v">${a.brand}</span></div>
-     <div class="kv"><span class="k">Segment</span><span class="v">${a.segment}</span></div>
-     <div class="kv"><span class="k">Region</span><span class="v">${a.region}</span></div>
-     <div class="kv"><span class="k">Language</span><span class="v">${a.lang}</span></div>`;
   document.getElementById('dCust').style.display = dyn?'block':'none';
+  setDetailSolo(!dyn);
   if(dyn){
     document.getElementById('swQR').classList.toggle('on',D.qrOn);
     document.getElementById('qrPanel').style.display=D.qrOn?'block':'none';
@@ -812,8 +911,6 @@ function openDetail(id){
     renderChips(); renderCoverLib();
   }
   renderPage(); renderFoot();
-  document.getElementById('descBody').style.display='block';
-  document.getElementById('descChev').style.transform='rotate(0deg)';
   document.getElementById('ov-detail').classList.add('open');
 }
 function renderFoot(){
@@ -855,7 +952,7 @@ function generateQR(){
     input.focus();
     return;
   }
-  help.textContent='Enter machine numbers separated by comma.';
+  help.textContent='Enter machine numbers separated by comma or space.';
   help.style.color='';
   const gen=document.getElementById('qrGen');
   gen.disabled=true; gen.innerHTML=`<span class="spin" style="width:15px;height:15px;border-width:2px"></span> Generating…`;
@@ -915,11 +1012,12 @@ function addDetail(){
   const id=D.id, was=!!selected[id];
   if(D.dyn)config[id]={codes:D.codes.slice(),cover:D.coverOn,coverVariant:D.coverVariant};
   selected[id]=true;
-  closeOv('ov-detail'); renderGrid();
+  closeOv('ov-detail'); renderGrid(); renderResources(); renderPreview();
   toast(was?`${D.a.name.split('_')[0]||D.a.name} updated`:`Added to print order`);
 }
-function removeDetail(){delete selected[D.id];delete config[D.id];closeOv('ov-detail');renderGrid();toast('Removed from print order');}
-function closeOv(id){document.getElementById(id).classList.remove('open');}
+function removeDetail(){delete selected[D.id];delete config[D.id];closeOv('ov-detail');renderGrid();renderResources();renderPreview();toast('Removed from print order');}
+function closeOv(id){document.getElementById(id).classList.remove('open'); if(id==='ov-detail'&&fromPreview){fromPreview=false;openPreview();}}
+function setDetailSolo(solo){document.querySelector('#ov-detail .modal').classList.toggle('solo',solo);document.querySelector('#ov-detail .m-body').classList.toggle('solo',solo);}
 
 /* ================= CHECKOUT (third-party) ================= */
 let CO={};
@@ -1118,20 +1216,18 @@ function renderOrders(){
 function orderCard(x,oid,idx){
   const a=ASSETS.find(z=>z.name===x.n);
   const dyn=x.t==='dynamic';
-  const pages=dyn?((x.qr||0)+(x.cov?1:0)):(x.p||0);
-  const thumb=a?assetThumb(a):`<div style="color:var(--ink-3)"><svg class="ic" style="width:44px;height:44px;stroke-width:1.2"><use href="#i-file-text"/></svg></div>`;
-  const chips=(x.qr||x.cov)?`<div class="cfgchips" style="margin:0 0 12px">${x.qr?`<span class="c"><svg class="ic"><use href="#i-qr"/></svg>${x.qr} QR pages</span>`:''}${x.cov?`<span class="c"><svg class="ic"><use href="#i-layers"/></svg>Cover</span>`:''}</div>`:'';
-  return `<div class="acard" style="cursor:pointer" onclick="openOrderedAsset('${oid}',${idx})">
-    <div class="acard-top">
-      <span></span>
-      <span class="atag ${dyn?'cust':'rtp'}">${dyn?'Customized':'Static'}</span>
+  const thumb=a?assetThumb(a):`<div style="color:var(--ink-3)"><svg class="ic" style="width:32px;height:32px;stroke-width:1.2"><use href="#i-file-text"/></svg></div>`;
+  const badge=`<span class="atag ${dyn?'cust':'rtp'}">${dyn?'Customized':'Static'}</span>`;
+  let sub;
+  if(dyn){const parts=[];if(x.qr)parts.push(x.qr+' QR page'+(x.qr>1?'s':''));if(x.cov)parts.push('Cover');sub=parts.join(' · ')||'—';}
+  else{sub=(x.p?x.p+' page'+(x.p>1?'s':''):'Ready to print');}
+  if(x.qty&&x.qty>1)sub+=` · × ${x.qty}`;
+  return `<div class="po-item" style="cursor:pointer" onclick="openOrderedAsset('${oid}',${idx})">
+    <div class="po-thumb">${thumb}</div>
+    <div class="po-info">
+      <div class="po-name" title="${x.n}">${x.n}</div>
+      <div class="po-sub">${badge}<span>${sub}</span></div>
     </div>
-    <div class="athumb">${thumb}</div>
-    <div class="aname" title="${x.n}">${x.n}</div>
-    ${chips}
-    <div class="arow"><span class="k">Brand</span><span class="v">${a?a.brand:'—'}</span></div>
-    <div class="arow"><span class="k">Segment</span><span class="v">${a?a.segment:'—'}</span></div>
-    <div class="arow"><span class="k">Pages</span><span class="v">${pages}${x.qty&&x.qty>1?` × ${x.qty}`:''}</span></div>
   </div>`;
 }
 function openOrder(id){
@@ -1150,8 +1246,8 @@ function openOrder(id){
      <div class="od-card"><div class="od-h"><span class="od-ic green"><svg class="ic"><use href="#i-card"/></svg></span> Payment</div><div style="margin-bottom:10px"><span class="badge ${m.c}"><span class="d"></span>${m.l}</span></div><div class="od-kv"><span class="k">Method</span><span class="v">${o.payMethod}</span></div><div class="od-kv"><span class="k">Reference</span><span class="v" style="font-family:var(--mono);font-size:12px">${o.payRef}</span></div></div>
      <div class="od-card"><div class="od-h"><span class="od-ic"><svg class="ic"><use href="#i-pkg"/></svg></span> Order</div><div class="od-kv"><span class="k">Assets</span><span class="v">${o.assets.length}</span></div><div class="od-kv"><span class="k">Total pages</span><span class="v">${totalPages}</span></div>${totalQr?`<div class="od-kv"><span class="k">QR codes</span><span class="v">${totalQr}</span></div>`:''}</div>
    </div>
-   <div style="font-size:16px;font-weight:700;margin:26px 0 16px">Assets in this order <span style="color:var(--ink-3);font-weight:500;font-size:13px">· click a card to preview</span></div>
-   <div class="grid">${cards}</div>`;
+   <div style="font-size:16px;font-weight:700;margin:26px 0 16px">Assets in this order <span style="color:var(--ink-3);font-weight:500;font-size:13px">· click an item to preview</span></div>
+   <div class="po-list">${cards}</div>`;
   showScreen('detail');
 }
 /* Read-only preview of an ordered asset, exactly as configured */
@@ -1167,18 +1263,10 @@ function openOrderedAsset(oid,idx){
      coverOn:dyn?!!x.cov:false,
      coverVariant:'c1'};
   document.getElementById('dName').textContent=a.name;
-  document.getElementById('dDesc').textContent=a.desc;
-  document.getElementById('dMeta').innerHTML=
-    `<div class="kv"><span class="k">Brand</span><span class="v">${a.brand}</span></div>
-     <div class="kv"><span class="k">Segment</span><span class="v">${a.segment}</span></div>
-     <div class="kv"><span class="k">Region</span><span class="v">${a.region}</span></div>
-     <div class="kv"><span class="k">Language</span><span class="v">${a.lang}</span></div>
-     ${x.qty&&x.qty>1?`<div class="kv"><span class="k">Quantity</span><span class="v">× ${x.qty}</span></div>`:''}`;
   document.getElementById('dCust').style.display='none';
+  setDetailSolo(true);
   renderPage();
   document.getElementById('dFoot').innerHTML=`<div class="hint" style="margin-right:auto;align-self:center">As ordered in ${oid} — read-only</div><button class="btn primary" onclick="closeOv('ov-detail')">Close</button>`;
-  document.getElementById('descBody').style.display='block';
-  document.getElementById('descChev').style.transform='rotate(0deg)';
   document.getElementById('ov-detail').classList.add('open');
 }
 function reorder(id){
@@ -1189,16 +1277,138 @@ function reorder(id){
 }
 
 /* ================= NAV ================= */
-function showScreen(n){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('s-'+n).classList.add('active');window.scrollTo(0,0);updatePill();}
+function showScreen(n){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('s-'+n).classList.add('active');
+  const titles={orders:'Print Orders',new:'New Print Orders',resources:'Resources',preview:'Print Order Preview',detail:'Order Detail'};
+  const tt=document.getElementById('topTitle'); if(tt&&titles[n])tt.textContent=titles[n];
+  const rp=document.getElementById('railPrint'), rr=document.getElementById('railResources');
+  if(rp&&rr){const res=(n==='resources');rr.classList.toggle('active',res);rp.classList.toggle('active',!res);}
+  window.scrollTo(0,0);updatePill();}
 function goOrders(){setOrdersState('filled');showScreen('orders');}
 function openNew(){showScreen('new');setType(activeType);}
+
+/* ================= RESOURCES ================= */
+function openResources(){showScreen('resources');renderResources();}
+function renderResources(){
+  const g=document.getElementById('resGrid');
+  const q=(document.getElementById('resSearch').value||'').trim().toLowerCase();
+  const list=ASSETS.filter(a=>!q||a.name.toLowerCase().includes(q)||a.brand.toLowerCase().includes(q)||a.segment.toLowerCase().includes(q));
+  document.getElementById('resCount').textContent=list.length;
+  if(!list.length){g.innerHTML=`<div class="nomatch" style="grid-column:1/-1;background:var(--surface);border:1px dashed var(--border-2);border-radius:var(--r-lg)">No resources match your search.</div>`;updatePill();return;}
+  g.innerHTML=list.map(a=>{
+    const inpo=!!selected[a.id];
+    return `<div class="rcard ${inpo?'inpo':''}">
+      ${inpo?`<span class="inpo-flag"><svg class="ic sm"><use href="#i-check"/></svg> In print order</span>`:''}
+      <div class="rthumb" onclick="openDetail('${a.id}')">${assetThumb(a)}</div>
+      <div class="rname" onclick="openDetail('${a.id}')" title="${a.name}">${a.name}</div>
+      <div class="rfoot">
+        <span class="rtype"><svg class="ic"><use href="#i-file-pdf"/></svg> PDF</span>
+        <button class="rkebab" onclick="toggleResMenu(event,'${a.id}')" aria-label="More actions"><svg class="ic"><use href="#i-dots"/></svg></button>
+      </div>
+      ${resMenuHTML(a)}
+    </div>`;
+  }).join('');
+  updatePill();
+}
+function resMenuHTML(a){
+  const inpo=!!selected[a.id], dyn=a.type==='dynamic';
+  const poItem = inpo
+    ? (dyn
+        ? `<div class="rmi primary" onclick="openDetail('${a.id}')"><svg class="ic"><use href="#i-sliders"/></svg><span class="lbl">Edit customization</span></div>`
+        : `<div class="rmi primary" onclick="removeFromPO('${a.id}')"><svg class="ic"><use href="#i-x"/></svg><span class="lbl">Remove from print order</span></div>`)
+    : `<div class="rmi primary" onclick="addToPrintOrder('${a.id}')"><svg class="ic"><use href="#i-mn-cart"/></svg><span class="lbl">Add to Print Order</span><span class="rmi-badge">New</span></div>`;
+  return `<div class="rmenu" id="rmenu-${a.id}" onclick="event.stopPropagation()">
+    <div class="rmi" onclick="closeResMenus()"><svg class="ic"><use href="#i-mn-mail"/></svg><span class="lbl">Email</span><svg class="ic chev"><use href="#i-mn-chev"/></svg></div>
+    <div class="rmi" onclick="closeResMenus()"><svg class="ic"><use href="#i-mn-star"/></svg><span class="lbl">Add to favorites</span></div>
+    <div class="rmi" onclick="closeResMenus()"><svg class="ic"><use href="#i-mn-dl"/></svg><span class="lbl">Download</span></div>
+    <div class="rmi" onclick="closeResMenus()"><svg class="ic"><use href="#i-mn-easel-check"/></svg><span class="lbl">Create Presentation</span></div>
+    <div class="rmi" onclick="closeResMenus()"><svg class="ic"><use href="#i-mn-ai"/></svg><span class="lbl">AI PDF Assistant</span></div>
+    <div class="rmi" onclick="closeResMenus()"><svg class="ic"><use href="#i-mn-easel-plus"/></svg><span class="lbl">Add to Presentation</span></div>
+    ${poItem}
+    <div class="rmi" onclick="closeResMenus()"><svg class="ic"><use href="#i-mn-link"/></svg><span class="lbl">Get Link</span></div>
+    <div class="rmi" onclick="closeResMenus()"><svg class="ic"><use href="#i-mn-info"/></svg><span class="lbl">More Info</span></div>
+  </div>`;
+}
+function toggleResMenu(e,id){
+  e.stopPropagation();
+  const m=document.getElementById('rmenu-'+id);
+  const wasOpen=m.classList.contains('open');
+  closeResMenus();
+  if(wasOpen)return;
+  m.style.maxHeight='';m.classList.add('open');
+  const btn=e.currentTarget.getBoundingClientRect();
+  const gap=6, pad=8, mw=m.offsetWidth||278;
+  // horizontal: right edge of menu aligns with right edge of the button, clamped to viewport
+  const left=Math.min(Math.max(pad, btn.right-mw), window.innerWidth-mw-pad);
+  m.style.left=left+'px';
+  // vertical: always open downward from the button. If the menu would run off
+  // the bottom of the screen, lift the whole menu up just enough to fit — it
+  // never flips to grow upward from the button.
+  const fullH=m.scrollHeight;
+  const h=Math.min(fullH, window.innerHeight-pad*2);
+  let top=btn.bottom+gap;
+  if(top+h > window.innerHeight-pad) top=window.innerHeight-pad-h;
+  if(top<pad) top=pad;
+  m.style.top=top+'px';
+  m.style.maxHeight=h+'px';
+}
+function closeResMenus(){document.querySelectorAll('.rmenu.open').forEach(m=>m.classList.remove('open'));}
+function addToPrintOrder(id){closeResMenus();const a=ASSETS.find(x=>x.id===id);if(a.type==='dynamic'){openDetail(id);}else{selected[id]=true;renderResources();toast('Added to print order');}}
+function removeFromPO(id){closeResMenus();delete selected[id];delete config[id];renderResources();toast('Removed from print order');}
+
+/* ================= PRINT ORDER PREVIEW ================= */
+let fromPreview=false;
+function openPreview(){document.getElementById('ov-preview').classList.add('open');renderPreview();}
+function poPageCount(a){
+  if(a.type==='dynamic'){const c=config[a.id]||{codes:[],cover:false};return (c.codes?c.codes.length:0)+(c.cover?1:0);}
+  return a.pages||1;
+}
+function renderPreview(){
+  const body=document.getElementById('poBody'), foot=document.getElementById('poFoot');
+  const ids=Object.keys(selected);
+  if(!ids.length){
+    body.innerHTML=`<div class="po-empty"><div class="glyph"><svg class="ic"><use href="#i-cart"/></svg></div><h3>No items in your print order</h3><p>Add resources to send them to print.</p><button class="btn primary" onclick="closeOv('ov-preview');openResources()">Browse resources</button></div>`;
+    foot.innerHTML='';
+    return;
+  }
+  let totalPages=0;
+  const rows=ids.map(id=>{
+    const a=ASSETS.find(x=>x.id===id); if(!a)return'';
+    const dyn=a.type==='dynamic';
+    totalPages+=poPageCount(a);
+    const badge=`<span class="atag ${dyn?'cust':'rtp'}">${dyn?'Customized':'Static'}</span>`;
+    let sub='';
+    if(dyn){const c=config[a.id]||{codes:[],cover:false};const parts=[];if(c.codes&&c.codes.length)parts.push(c.codes.length+' QR page'+(c.codes.length>1?'s':''));if(c.cover)parts.push('Cover');sub=parts.join(' · ');}
+    else{sub=(a.pages?a.pages+' page'+(a.pages>1?'s':''):'Ready to print');}
+    return `<div class="po-item">
+      <div class="po-thumb">${assetThumb(a)}</div>
+      <div class="po-info">
+        <div class="po-name" title="${a.name}">${a.name}</div>
+        <div class="po-sub">${badge}${sub?`<span>${sub}</span>`:''}</div>
+      </div>
+      <div class="po-actions">
+        ${dyn?`<button class="btn neutral sm" onclick="editPO('${a.id}')"><svg class="ic sm"><use href="#i-sliders"/></svg> Edit</button>`:''}
+        <button class="btn neutral sm" onclick="removePO('${a.id}')"><svg class="ic sm"><use href="#i-x"/></svg> Remove</button>
+      </div>
+    </div>`;
+  }).join('');
+  const n=ids.length;
+  body.innerHTML=`<div class="po-list">${rows}</div>`;
+  foot.innerHTML=`<div class="sum">${n} item${n>1?'s':''} <span>· ${totalPages} page${totalPages!==1?'s':''} total</span></div>
+      <div class="grow"></div>
+      <button class="btn neutral" onclick="closeOv('ov-preview');openResources()"><svg class="ic sm"><use href="#i-plus"/></svg> Add more</button>
+      <button class="btn primary" onclick="closeOv('ov-preview');openCheckout()"><svg class="ic sm"><use href="#i-printer"/></svg> Send to print</button>`;
+}
+function editPO(id){fromPreview=true;document.getElementById('ov-preview').classList.remove('open');openDetail(id);}
+function removePO(id){delete selected[id];delete config[id];renderPreview();renderResources();updatePill();toast('Removed from print order');}
 function setOrdersState(st){document.querySelectorAll('#s-orders [data-st]').forEach(el=>el.classList.toggle('show',el.getAttribute('data-st')===st));}
 
 /* toast */
 let tt;function toast(m){const t=document.getElementById('toast');document.getElementById('toastMsg').textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2400);}
 
-document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');}));
-document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.overlay.open').forEach(o=>o.classList.remove('open'));});
+document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)closeOv(o.id);}));
+document.addEventListener('click',()=>closeResMenus());
+window.addEventListener('scroll',()=>closeResMenus(),true);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.overlay.open').forEach(o=>closeOv(o.id));closeResMenus();}});
 
 // init
 document.getElementById('cAll').textContent=`(${ASSETS.length})`;
