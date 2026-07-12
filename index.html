@@ -1070,6 +1070,7 @@ function payNow(){
 function placeOrder(){
   const id='ORD-'+(nextNum++);
   const assets=CO.items.map(it=>({n:it.a.name,t:it.a.type,p:it.a.pages||0,qr:it.c?it.c.codes.length:0,cov:it.c?it.c.cover:false,qty:it.qty}));
+  ORDERS.forEach(o=>o.fresh=false);
   ORDERS.unshift({id,date:'2026-07-02',city:'Madison, WI',status:'paid',addr:'Sunshine Coin Laundry, 220 W Main St, Madison, WI 53703, US',recipient:'Sunshine Coin Laundry',payMethod:'Card •••• 4242',payRef:'PP-'+(8842000+Math.floor(Math.random()*900)),assets,items:assets.length,fresh:true});
   document.getElementById('coContent').innerHTML=`<div class="co-success"><div class="chk"><svg class="ic"><use href="#i-check"/></svg></div><h3>Order placed</h3><p>${id} has been sent to the print provider.</p><button class="btn primary" onclick="finishCheckout('${id}')">Back to Print Orders</button></div>`;
 }
@@ -1077,6 +1078,7 @@ function finishCheckout(id){
   clearSel();
   pickStatus('all','By status'); document.getElementById('fSearch').value='';
   closeOv('ov-co'); renderKPIs(); renderOrders(); goOrders(); toast('Sent to print · '+id);
+  setTimeout(()=>{ORDERS.forEach(o=>o.fresh=false);renderOrders();},2600);
 }
 
 /* ================= ORDERS LIST ================= */
