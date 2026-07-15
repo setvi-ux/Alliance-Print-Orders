@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alliance Laundry · Print Orders</title>
+<title>Alliance Laundry · Order History</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
@@ -101,6 +101,8 @@ input{font-family:inherit}
 
 /* ---------- KPIs (DS KPI Card component) ---------- */
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.track-note{display:flex;align-items:center;gap:10px;background:var(--accent-soft);border:1px solid var(--accent-border);color:var(--ink-2);border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:13.5px}
+.track-note .ic{color:var(--accent);flex-shrink:0}
 .kpi{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px 18px;box-shadow:var(--sh-1)}
 .kpi-top{display:flex;align-items:center;gap:9px;margin-bottom:6px}
 .kpi-ic{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink-3);background:var(--surface-2);flex-shrink:0}
@@ -468,7 +470,7 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
 <div class="app">
   <!-- Rail -->
   <header class="topbar">
-      <div class="tb-left"><span class="tb-logo"><div class="logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAABKJJREFUeAHdml9MW1Ucx7/ntrR0tB0wKlP2UNiikDEhJlPi1Aw1BiNk1aeZTI1xL/oyE6cPvlAffNKH4av6oDNxvhhwJlv8N+OiycSHMk1sNEqjYW6uY6zQtaX0np3fWVja0Y1b+J0C/SQN9/b2NvfD99zf+d3bK3AT7u7BvXZB7pOQEUCEsTGICYGYbde9hfhooniDuLEUjjRavvywBF7FBkZYOGKnlWhidEav63eVnPDlT6mlXtQGMZmp6ydJi9YoOdSOHNFrNWgnlWBnJCxEfhI1iHSJfsuyrpuuF9xbAwi9GwEHVsGOuCWEGpoS6wHfgx1ofqMfosELDpTbPjekXPNzz/J7EXxuN/zP3Atmwm6sMd6eNjS/3g9XaxAmWFPBxpcfMpFaCWsiSIVkS/RJ1G1vgWmqLhhQiQWf381WSJajaoJUSCg1b89dqCZVETRdSG6HUcGVlv+5z8+CC2OCnh0takgOVJSaTOeQHD6J3MQUuDAiSIVks5oCKiE3cQ6Xhk/AVpKcsApS+W86/FhFhYRSu/LxOOuwLDkmMNHwRCcaX9lTUfnP/5VUqZ3EwoUUTGGBCTpv7LnKhhcVIeH3wCQuEbo7Cgbs9LweZlbAC09Xq6N9SNA/uFMv586egwnYBBfJjv+jD7ZenYck4ASaJ3172pH75d+KR8FysAsShQuzyP44qQWd9puu5k1aUs7N63OTCzbBupZ22FdnbqzTkM38NKllPTu2OEqTPkOSljovsypNDtgE2176CELdnMxN/VbyPqVRaZqerq1IHR0HB2xVlAjevx93vvA+3ME7St5fUClOv/MdLqtXweCUUA5WQYLkWvcfQaB3aMm29FdxXHxtjLUVWw52Qf2l3gY0PnwQzY8fKpvmxcNjbENw2WOBQRq6HkXo6bf135tJqfbs/IGjxoesUUGCEqQkGx85uGQbpfnfgU+MpmlccJFAz1DZAkSYTLNqggTJkeTmB55dss1UmmxXEzKXhlDFxQk0nXjbujH9zQgWUv+XbKM06dqQC7aJ/uqfp7Fpe5+uoE6gNH0dfZDzaeSTpb/9UPfDBd/VhEpwNnZcL9dv2+VoH/pnkKQ72Kol6Tu4YW+2qVXL/n0GvvB9jtP0hNq1KO1b3M9yYOZqQh1kRkmSoCfU4Wgf+qx/10DZfnY1GBEkaLiRJA3XclPDraDiQ0OW9uXA2G1DSqTlqTf1ATuFKvHMmU8xN3EcXBgRrN/WjSbqQwPOk8tN/aqmjfeWTBurhV2wSbVk/p6hiva5/MMHrKkVwya42HNWMiRpapj+egTzSXPPQLAJ0jWg02mBmI19gZnTH8I0bIJO5QrqHLukWjTOqeB2VPUHUEot9fMxIx3LraiKYLVTK8a4YPr3b/W5Vs3UijEmSJM2pcbVkawUI4KmJu2VQIIJ9QqDAROt1qoQiLkFxJiEPIRVsp5SW0TQk8DoHNwrhDyFGkTKQrsLyT8SVuieJrXehxpCjcoRxE8c03fVbK87SuMVtUMMGU+UFlx69Xw8i7adn1kF6cMGT1Inl/G8WPpQejGdA2FLuKJSiJ718CypQxICcsyW1ijiX35fvOEay9PGx6CIxDUAAAAASUVORK5CYII=" alt="SETVI" style="width:100%;height:100%;object-fit:cover;display:block"></div></span><h1 id="topTitle">Print Orders</h1></div>
+      <div class="tb-left"><span class="tb-logo"><div class="logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAABKJJREFUeAHdml9MW1Ucx7/ntrR0tB0wKlP2UNiikDEhJlPi1Aw1BiNk1aeZTI1xL/oyE6cPvlAffNKH4av6oDNxvhhwJlv8N+OiycSHMk1sNEqjYW6uY6zQtaX0np3fWVja0Y1b+J0C/SQN9/b2NvfD99zf+d3bK3AT7u7BvXZB7pOQEUCEsTGICYGYbde9hfhooniDuLEUjjRavvywBF7FBkZYOGKnlWhidEav63eVnPDlT6mlXtQGMZmp6ydJi9YoOdSOHNFrNWgnlWBnJCxEfhI1iHSJfsuyrpuuF9xbAwi9GwEHVsGOuCWEGpoS6wHfgx1ofqMfosELDpTbPjekXPNzz/J7EXxuN/zP3Atmwm6sMd6eNjS/3g9XaxAmWFPBxpcfMpFaCWsiSIVkS/RJ1G1vgWmqLhhQiQWf381WSJajaoJUSCg1b89dqCZVETRdSG6HUcGVlv+5z8+CC2OCnh0takgOVJSaTOeQHD6J3MQUuDAiSIVks5oCKiE3cQ6Xhk/AVpKcsApS+W86/FhFhYRSu/LxOOuwLDkmMNHwRCcaX9lTUfnP/5VUqZ3EwoUUTGGBCTpv7LnKhhcVIeH3wCQuEbo7Cgbs9LweZlbAC09Xq6N9SNA/uFMv586egwnYBBfJjv+jD7ZenYck4ASaJ3172pH75d+KR8FysAsShQuzyP44qQWd9puu5k1aUs7N63OTCzbBupZ22FdnbqzTkM38NKllPTu2OEqTPkOSljovsypNDtgE2176CELdnMxN/VbyPqVRaZqerq1IHR0HB2xVlAjevx93vvA+3ME7St5fUClOv/MdLqtXweCUUA5WQYLkWvcfQaB3aMm29FdxXHxtjLUVWw52Qf2l3gY0PnwQzY8fKpvmxcNjbENw2WOBQRq6HkXo6bf135tJqfbs/IGjxoesUUGCEqQkGx85uGQbpfnfgU+MpmlccJFAz1DZAkSYTLNqggTJkeTmB55dss1UmmxXEzKXhlDFxQk0nXjbujH9zQgWUv+XbKM06dqQC7aJ/uqfp7Fpe5+uoE6gNH0dfZDzaeSTpb/9UPfDBd/VhEpwNnZcL9dv2+VoH/pnkKQ72Kol6Tu4YW+2qVXL/n0GvvB9jtP0hNq1KO1b3M9yYOZqQh1kRkmSoCfU4Wgf+qx/10DZfnY1GBEkaLiRJA3XclPDraDiQ0OW9uXA2G1DSqTlqTf1ATuFKvHMmU8xN3EcXBgRrN/WjSbqQwPOk8tN/aqmjfeWTBurhV2wSbVk/p6hiva5/MMHrKkVwya42HNWMiRpapj+egTzSXPPQLAJ0jWg02mBmI19gZnTH8I0bIJO5QrqHLukWjTOqeB2VPUHUEot9fMxIx3LraiKYLVTK8a4YPr3b/W5Vs3UijEmSJM2pcbVkawUI4KmJu2VQIIJ9QqDAROt1qoQiLkFxJiEPIRVsp5SW0TQk8DoHNwrhDyFGkTKQrsLyT8SVuieJrXehxpCjcoRxE8c03fVbK87SuMVtUMMGU+UFlx69Xw8i7adn1kF6cMGT1Inl/G8WPpQejGdA2FLuKJSiJ718CypQxICcsyW1ijiX35fvOEay9PGx6CIxDUAAAAASUVORK5CYII=" alt="SETVI" style="width:100%;height:100%;object-fit:cover;display:block"></div></span><h1 id="topTitle">Order History</h1></div>
       <div class="top-right">
         <div class="bell"><svg class="ic"><use href="#i-bell"/></svg><span class="dot"></span></div>
         <div class="acct">
@@ -487,7 +489,7 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
     <a class="railitem" href="#"><svg class="ic"><use href="#i-rfq"/></svg>RFQ</a>
     <a class="railitem" id="railResources" href="#" onclick="openResources();return false"><svg class="ic"><use href="#i-file"/></svg>Resources</a>
     <a class="railitem" href="#"><svg class="ic"><use href="#i-bag"/></svg>Catalog</a>
-    <a class="railitem active" id="railPrint" href="#" onclick="goOrders();return false"><svg class="ic"><use href="#i-cart"/></svg>Print Orders</a>
+    <a class="railitem active" id="railPrint" href="#" onclick="goOrders();return false"><svg class="ic"><use href="#i-cart"/></svg>Order History</a>
     <a class="railitem" href="#"><svg class="ic"><use href="#i-cube"/></svg>Workspaces</a>
     <a class="railitem" href="#"><svg class="ic"><use href="#i-mega"/></svg>Campaigns</a>
     <a class="railitem" href="#"><svg class="ic"><use href="#i-send"/></svg>Outbox</a>
@@ -503,8 +505,9 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
     <section class="screen active" id="s-orders">
       <div class="content">
         <div data-st="filled" class="show" id="ordersFilled">
+<div class="track-note"><svg class="ic sm"><use href="#i-info"/></svg><span>All tracking information has been provided in the confirmation email.</span></div>
           <div class="kpis">
-            <div class="kpi"><div class="kpi-top"><span class="kpi-ic blue"><svg class="ic sm"><use href="#i-cart"/></svg></span><span class="kpi-lbl">Total Print Orders</span></div><div class="kpi-val" id="kOrders">—</div></div>
+            <div class="kpi"><div class="kpi-top"><span class="kpi-ic blue"><svg class="ic sm"><use href="#i-cart"/></svg></span><span class="kpi-lbl">Total Orders</span></div><div class="kpi-val" id="kOrders">—</div></div>
             <div class="kpi"><div class="kpi-top"><span class="kpi-ic"><svg class="ic sm"><use href="#i-file"/></svg></span><span class="kpi-lbl">Assets ordered</span></div><div class="kpi-val" id="kItems">—</div></div>
             <div class="kpi"><div class="kpi-top"><span class="kpi-ic green"><svg class="ic sm"><use href="#i-check-c"/></svg></span><span class="kpi-lbl">Completed</span></div><div class="kpi-val" id="kDone">—</div></div>
             <div class="kpi"><div class="kpi-top"><span class="kpi-ic red"><svg class="ic sm"><use href="#i-alert"/></svg></span><span class="kpi-lbl">Needs attention</span></div><div class="kpi-val" id="kAttn">—</div></div>
@@ -556,9 +559,9 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
 
         <div data-st="empty" class="empty">
           <div class="glyph"><svg class="ic"><use href="#i-search"/></svg></div>
-          <h3>No print orders yet</h3>
+          <h3>No orders yet</h3>
           <p>Select assets and send them to print. Your orders will show up here with their status.</p>
-          <button class="btn primary" onclick="openNew()"><svg class="ic sm"><use href="#i-plus"/></svg> New Print Order</button>
+          <button class="btn primary" onclick="openNew()"><svg class="ic sm"><use href="#i-plus"/></svg> New Order</button>
         </div>
       </div>
     </section>
@@ -568,7 +571,7 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
       <div class="content">
         <div class="phead">
           <button class="iconcirc" onclick="goOrders()" aria-label="Back"><svg class="ic"><use href="#i-arr-l"/></svg></button>
-          <h2>New Print Orders</h2>
+          <h2>New Order</h2>
         </div>
         <div class="toolbar2">
           <div class="tabs" id="tabs">
@@ -618,14 +621,14 @@ select.select:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(
 <div class="selpill" id="pill">
   <div class="sp-count"><span class="sp-badge" id="pillCount">0</span> selected</div>
   <div class="sp-div"></div>
-  <button class="sp-print" onclick="openPreview()"><svg class="ic sm"><use href="#i-arr-r"/></svg> Print Order Preview</button>
+  <button class="sp-print" onclick="openPreview()"><svg class="ic sm"><use href="#i-arr-r"/></svg> Review Cart</button>
   <button class="sp-cancel" onclick="clearSel()">Cancel</button>
 </div>
 
 <!-- ============ ASSET DETAIL / CUSTOMIZE MODAL ============ -->
 <div class="overlay" id="ov-preview">
   <div class="modal">
-    <div class="m-head"><h2>Print Order Preview</h2><button class="x" onclick="closeOv('ov-preview')"><svg class="ic"><use href="#i-x"/></svg></button></div>
+    <div class="m-head"><h2>Review Cart</h2><button class="x" onclick="closeOv('ov-preview')"><svg class="ic"><use href="#i-x"/></svg></button></div>
     <div class="m-body" style="display:block;padding:20px 26px" id="poBody"></div>
     <div class="m-foot" id="poFoot" style="align-items:center"></div>
   </div>
@@ -861,7 +864,7 @@ function renderGrid(){
     const outLbl = dyn ? 'Output' : 'Pages';
     const mainBtn = dyn
       ? `<button class="act ${sel?'added':''}" onclick="openDetail('${a.id}')"><svg class="ic sm"><use href="#i-sliders"/></svg> ${sel?'Edit':'Customize'}</button>`
-      : `<button class="act ${sel?'added':''}" onclick="toggleSel('${a.id}')">${sel?`<svg class="ic sm"><use href="#i-check"/></svg> Added`:`<svg class="ic sm"><use href="#i-plus"/></svg> Add to Print`}</button>`;
+      : `<button class="act ${sel?'added':''}" onclick="toggleSel('${a.id}')">${sel?`<svg class="ic sm"><use href="#i-check"/></svg> Added`:`<svg class="ic sm"><use href="#i-plus"/></svg> Add to Cart`}</button>`;
     const cb = (dyn&&!sel)?'cbx locked':'cbx';
     const cbTitle = (dyn&&!sel)?'title="Customize to add"':'';
     return `<div class="acard ${sel?'selected':''}">
@@ -918,14 +921,14 @@ function renderFoot(){
   if(!D.dyn){
     f.innerHTML = D.inCart
       ? `<button class="btn" onclick="removeDetail()"><svg class="ic sm"><use href="#i-x"/></svg> Remove</button><button class="btn primary" onclick="closeOv('ov-detail')">Done</button>`
-      : `<button class="btn" onclick="closeOv('ov-detail')">Cancel</button><button class="btn primary" onclick="addDetail()"><svg class="ic sm"><use href="#i-plus"/></svg> Add to Print</button>`;
+      : `<button class="btn" onclick="closeOv('ov-detail')">Cancel</button><button class="btn primary" onclick="addDetail()"><svg class="ic sm"><use href="#i-plus"/></svg> Add to Cart</button>`;
     return;
   }
   const ready = customizeReady();
   if(D.inCart){
     f.innerHTML=`<button class="btn" onclick="closeOv('ov-detail')">Cancel</button><button class="btn" onclick="removeDetail()"><svg class="ic sm"><use href="#i-x"/></svg> Remove</button><button class="btn primary" ${ready?'':'disabled'} onclick="addDetail()"><svg class="ic sm"><use href="#i-check"/></svg> Save changes</button>`;
   } else {
-    f.innerHTML=`<button class="btn" onclick="closeOv('ov-detail')">Cancel</button><button class="btn primary" ${ready?'':'disabled'} onclick="addDetail()"><svg class="ic sm"><use href="#i-plus"/></svg> Add to Print</button>`;
+    f.innerHTML=`<button class="btn" onclick="closeOv('ov-detail')">Cancel</button><button class="btn primary" ${ready?'':'disabled'} onclick="addDetail()"><svg class="ic sm"><use href="#i-plus"/></svg> Add to Cart</button>`;
   }
   if(!ready){
     f.insertAdjacentHTML('afterbegin',`<div class="hint" style="margin-right:auto;align-self:center">Add QR codes or a cover to continue</div>`);
@@ -1013,9 +1016,9 @@ function addDetail(){
   if(D.dyn)config[id]={codes:D.codes.slice(),cover:D.coverOn,coverVariant:D.coverVariant};
   selected[id]=true;
   closeOv('ov-detail'); renderGrid(); renderResources(); renderPreview();
-  toast(was?`${D.a.name.split('_')[0]||D.a.name} updated`:`Added to print order`);
+  toast(was?`${D.a.name.split('_')[0]||D.a.name} updated`:`Added to cart`);
 }
-function removeDetail(){delete selected[D.id];delete config[D.id];closeOv('ov-detail');renderGrid();renderResources();renderPreview();toast('Removed from print order');}
+function removeDetail(){delete selected[D.id];delete config[D.id];closeOv('ov-detail');renderGrid();renderResources();renderPreview();toast('Removed from cart');}
 function closeOv(id){document.getElementById(id).classList.remove('open'); if(id==='ov-detail'&&fromPreview){fromPreview=false;openPreview();}}
 function setDetailSolo(solo){document.querySelector('#ov-detail .modal').classList.toggle('solo',solo);document.querySelector('#ov-detail .m-body').classList.toggle('solo',solo);}
 
@@ -1072,7 +1075,7 @@ function placeOrder(){
   const assets=CO.items.map(it=>({n:it.a.name,t:it.a.type,p:it.a.pages||0,qr:it.c?it.c.codes.length:0,cov:it.c?it.c.cover:false,qty:it.qty}));
   ORDERS.forEach(o=>o.fresh=false);
   ORDERS.unshift({id,date:'2026-07-02',city:'Madison, WI',status:'paid',addr:'Sunshine Coin Laundry, 220 W Main St, Madison, WI 53703, US',recipient:'Sunshine Coin Laundry',payMethod:'Card •••• 4242',payRef:'PP-'+(8842000+Math.floor(Math.random()*900)),assets,items:assets.length,fresh:true});
-  document.getElementById('coContent').innerHTML=`<div class="co-success"><div class="chk"><svg class="ic"><use href="#i-check"/></svg></div><h3>Order placed</h3><p>${id} has been sent to the print provider.</p><button class="btn primary" onclick="finishCheckout('${id}')">Back to Print Orders</button></div>`;
+  document.getElementById('coContent').innerHTML=`<div class="co-success"><div class="chk"><svg class="ic"><use href="#i-check"/></svg></div><h3>Order placed</h3><p>${id} has been sent to the print provider.</p><button class="btn primary" onclick="finishCheckout('${id}')">Back to Order History</button></div>`;
 }
 function finishCheckout(id){
   clearSel();
@@ -1280,7 +1283,7 @@ function reorder(id){
 
 /* ================= NAV ================= */
 function showScreen(n){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('s-'+n).classList.add('active');
-  const titles={orders:'Print Orders',new:'New Print Orders',resources:'Resources',preview:'Print Order Preview',detail:'Order Detail'};
+  const titles={orders:'Order History',new:'New Order',resources:'Resources',preview:'Review Cart',detail:'Order Detail'};
   const tt=document.getElementById('topTitle'); if(tt&&titles[n])tt.textContent=titles[n];
   const rp=document.getElementById('railPrint'), rr=document.getElementById('railResources');
   if(rp&&rr){const res=(n==='resources');rr.classList.toggle('active',res);rp.classList.toggle('active',!res);}
@@ -1299,7 +1302,7 @@ function renderResources(){
   g.innerHTML=list.map(a=>{
     const inpo=!!selected[a.id];
     return `<div class="rcard ${inpo?'inpo':''}">
-      ${inpo?`<span class="inpo-flag"><svg class="ic sm"><use href="#i-check"/></svg> In print order</span>`:''}
+      ${inpo?`<span class="inpo-flag"><svg class="ic sm"><use href="#i-check"/></svg> In cart</span>`:''}
       <div class="rthumb" onclick="openDetail('${a.id}')">${assetThumb(a)}</div>
       <div class="rname" onclick="openDetail('${a.id}')" title="${a.name}">${a.name}</div>
       <div class="rfoot">
@@ -1316,8 +1319,8 @@ function resMenuHTML(a){
   const poItem = inpo
     ? (dyn
         ? `<div class="rmi primary" onclick="openDetail('${a.id}')"><svg class="ic"><use href="#i-sliders"/></svg><span class="lbl">Edit customization</span></div>`
-        : `<div class="rmi primary" onclick="removeFromPO('${a.id}')"><svg class="ic"><use href="#i-x"/></svg><span class="lbl">Remove from print order</span></div>`)
-    : `<div class="rmi primary" onclick="addToPrintOrder('${a.id}')"><svg class="ic"><use href="#i-mn-cart"/></svg><span class="lbl">Add to Print Order</span><span class="rmi-badge">New</span></div>`;
+        : `<div class="rmi primary" onclick="removeFromPO('${a.id}')"><svg class="ic"><use href="#i-x"/></svg><span class="lbl">Remove from Cart</span></div>`)
+    : `<div class="rmi primary" onclick="addToPrintOrder('${a.id}')"><svg class="ic"><use href="#i-mn-cart"/></svg><span class="lbl">Add to Cart</span><span class="rmi-badge">New</span></div>`;
   return `<div class="rmenu" id="rmenu-${a.id}" onclick="event.stopPropagation()">
     <div class="rmi" onclick="closeResMenus()"><svg class="ic"><use href="#i-mn-mail"/></svg><span class="lbl">Email</span><svg class="ic chev"><use href="#i-mn-chev"/></svg></div>
     <div class="rmi" onclick="closeResMenus()"><svg class="ic"><use href="#i-mn-star"/></svg><span class="lbl">Add to favorites</span></div>
@@ -1354,8 +1357,8 @@ function toggleResMenu(e,id){
   m.style.maxHeight=h+'px';
 }
 function closeResMenus(){document.querySelectorAll('.rmenu.open').forEach(m=>m.classList.remove('open'));}
-function addToPrintOrder(id){closeResMenus();const a=ASSETS.find(x=>x.id===id);if(a.type==='dynamic'){openDetail(id);}else{selected[id]=true;renderResources();toast('Added to print order');}}
-function removeFromPO(id){closeResMenus();delete selected[id];delete config[id];renderResources();toast('Removed from print order');}
+function addToPrintOrder(id){closeResMenus();const a=ASSETS.find(x=>x.id===id);if(a.type==='dynamic'){openDetail(id);}else{selected[id]=true;renderResources();toast('Added to cart');}}
+function removeFromPO(id){closeResMenus();delete selected[id];delete config[id];renderResources();toast('Removed from cart');}
 
 /* ================= PRINT ORDER PREVIEW ================= */
 let fromPreview=false;
@@ -1368,7 +1371,7 @@ function renderPreview(){
   const body=document.getElementById('poBody'), foot=document.getElementById('poFoot');
   const ids=Object.keys(selected);
   if(!ids.length){
-    body.innerHTML=`<div class="po-empty"><div class="glyph"><svg class="ic"><use href="#i-cart"/></svg></div><h3>No items in your print order</h3><p>Add resources to send them to print.</p><button class="btn primary" onclick="closeOv('ov-preview');openResources()">Browse resources</button></div>`;
+    body.innerHTML=`<div class="po-empty"><div class="glyph"><svg class="ic"><use href="#i-cart"/></svg></div><h3>No items in your cart</h3><p>Add resources to send them to print.</p><button class="btn primary" onclick="closeOv('ov-preview');openResources()">Browse resources</button></div>`;
     foot.innerHTML='';
     return;
   }
@@ -1398,10 +1401,10 @@ function renderPreview(){
   foot.innerHTML=`<div class="sum">${n} item${n>1?'s':''} <span>· ${totalPages} page${totalPages!==1?'s':''} total</span></div>
       <div class="grow"></div>
       <button class="btn neutral" onclick="closeOv('ov-preview');openResources()"><svg class="ic sm"><use href="#i-plus"/></svg> Add more</button>
-      <button class="btn primary" onclick="closeOv('ov-preview');openCheckout()"><svg class="ic sm"><use href="#i-printer"/></svg> Send to print</button>`;
+      <button class="btn primary" onclick="closeOv('ov-preview');openCheckout()"><svg class="ic sm"><use href="#i-printer"/></svg> Checkout</button>`;
 }
 function editPO(id){fromPreview=true;document.getElementById('ov-preview').classList.remove('open');openDetail(id);}
-function removePO(id){delete selected[id];delete config[id];renderPreview();renderResources();updatePill();toast('Removed from print order');}
+function removePO(id){delete selected[id];delete config[id];renderPreview();renderResources();updatePill();toast('Removed from cart');}
 function setOrdersState(st){document.querySelectorAll('#s-orders [data-st]').forEach(el=>el.classList.toggle('show',el.getAttribute('data-st')===st));}
 
 /* toast */
